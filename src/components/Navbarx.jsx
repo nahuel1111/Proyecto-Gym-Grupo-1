@@ -3,32 +3,25 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import '../css/Navbarx.css'
 
 const Navbarx = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+<Navbar expand="lg">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">React Gym</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">  
-            <Nav.Link href="#home">Inicio</Nav.Link> 
-            <Nav.Link href="#link">sobre nosotros</Nav.Link>  
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+        <Navbar.Collapse >
+          <Nav className="cambio">
+            <Nav.Link href="#home" className='mt-2'>Inicio</Nav.Link>
+            <Nav.Link href="#link"  className='mt-2'>Sobre nosotros</Nav.Link>
+            <Nav.Link href="#link"  className='mt-2'>Contacto</Nav.Link>
+            <Nav.Link href="#link"  className='mt-2'>Productos</Nav.Link>
+            <li href="#link" className='boton-cambio'>Cerrar Sesion</li> 
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar>  )
+    </Navbar> )
 }
 
 export default Navbarx

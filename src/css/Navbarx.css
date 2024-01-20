@@ -1,5 +1,17 @@
 *{
     margin: 0;
-    padding: 0;
+    padding: 0 ;
     box-sizing: border-box;
+}
+
+.cambio{
+    margin-left: auto;
+    margin-right: 200px;
+}
+.boton-cambio{
+    background-color: white ;
+    color: black;
+    margin-left: 50px;
+    padding: 15px;
+    font-weight: bold;
 }

@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #101616;
+}
+
+
+.DivNombre{
+    color: white;
+    width: 40%;
+    text-align: center;
+    transition: 0.3s;
+    margin: 20px;
+}
+
+.divPadre{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px white solid;
+    padding-bottom: 70px;
+
+}
+
+.divList{
+    padding: 0;
+    width: 600px;
+    height: 500px;
+}
+
+.li-4{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.button{
+    background-color: #1C1F1D;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.li-1{
+    border: 1px #5B21A5 solid;
+    color: #29CD17;
+}
+
+.descripcion-Padre{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #29CD17;
+}
+
+.descripcion-Padre ul{
+    font-size: 40px;
+    color: white;
+    text-decoration: underline;
+}
+
+
+

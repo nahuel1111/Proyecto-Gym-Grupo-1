@@ -1,7 +1,7 @@
 
-const Imgs = ({url,alt,width}) => {
+const Imgs = ({url,alt,width, id}) => {
   return (
-    <img src={url} alt={alt} width={width} />
+    <img src={url} alt={alt} width={width} className={id}/>
 
   )
 }

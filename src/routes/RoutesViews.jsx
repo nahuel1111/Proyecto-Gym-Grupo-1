@@ -3,7 +3,6 @@ import Footerx from '../components/Footerx'
 import Navbarx from '../components/Navbarx'
 import HomePage from '../pages/HomePage'
 import ProductPage from '../pages/ProductPage'
-
 import HeroPage from '../pages/HeroPage'
 
 
@@ -14,7 +13,7 @@ const RoutesViews = () => {
     <Navbarx/>
     <Routes>
     <Route path='/' element={<HomePage/>} />
-    <Route path='/Productos' element={<ProductPage/>}  />
+    <Route path='/Product' element={<ProductPage/>}  />
     <Route path='/HeroPage' element={<HeroPage/>}/>
 
 

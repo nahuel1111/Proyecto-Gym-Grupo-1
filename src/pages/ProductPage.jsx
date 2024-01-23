@@ -14,9 +14,9 @@ const ProductPage = () => {
         </Col>
         <Col>
             <div>
-                <li></li>
-                <p></p>
-                <p></p>
+                <li> </li>
+                <p> Producto</p>
+                <p> </p>
             </div>
 
         </Col>

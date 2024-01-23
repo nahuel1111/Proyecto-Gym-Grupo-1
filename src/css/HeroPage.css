@@ -1,0 +1,18 @@
+.wrap {
+    width: 100vw;
+    height: 85vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgb(0 0 0 / .5), rgb(0 0 0 / .5)), url(https://i.postimg.cc/15G8vPqd/gym.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .wrap-texto {
+    color: #fff;
+    text-align: center;
+    width: 50%; 
+    align-self:center
+  }
+  

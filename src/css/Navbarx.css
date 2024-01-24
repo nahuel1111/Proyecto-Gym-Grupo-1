@@ -1,8 +1,3 @@
-*{
-    margin: 0;
-    padding: 0 ;
-    box-sizing: border-box;
-}
 
 .cambio{
     margin-left: auto;
@@ -14,4 +9,7 @@
     margin-left: 50px;
     padding: 15px;
     font-weight: bold;
+}
+.background-cambio{
+   margin-top: 15px;
 }

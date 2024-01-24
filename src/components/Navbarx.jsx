@@ -7,7 +7,7 @@ import '../css/Navbarx.css'
 
 const Navbarx = () => {
   return (
-<Navbar expand="lg">
+<Navbar expand="lg" >
       <Container>
         <Navbar.Brand href="#home">React Gym</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

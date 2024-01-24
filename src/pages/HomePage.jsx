@@ -4,11 +4,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Imgs from '../components/Imgs';
+import CardsC from '../components/CardsC';
+import 'remixicon/fonts/remixicon.css';
 
 const HomePage = () => {
   return (
     <>
-    <main className='body mt-5'>
+    <main className='body pt-5'>
     <Container>
       <Row>
         <Col  sm={10} md={2} lg={6}>
@@ -53,6 +55,10 @@ const HomePage = () => {
  <div className='parrafo-clases'>
   <h3>Nuestros planes para que logres tu maximo potencial</h3>
  </div>
+</div>
+
+<div className='mt-5'>
+  <CardsC url={"https://i.postimg.cc/zDhMzjHv/pricing1.png"} titulo={"clase yoga"} precio={"$2500"} primera={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} segunda={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} tercera={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} cuarta={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} quinta={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} boton={"Comprar clase"} clase={"background"} />
 </div>
 
 

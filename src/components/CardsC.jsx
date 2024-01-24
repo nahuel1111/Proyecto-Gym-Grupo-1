@@ -1,16 +1,35 @@
 import React from 'react'
+import '../css/Card.css'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import 'remixicon/fonts/remixicon.css';
 
-const CardsC = ({titulo,precio,descripcion,boton}) => {
+
+
+
+const CardsC = ({url,titulo,precio,primera,segunda,tercera,cuarta,quinta,boton,clase}) => {
   return (
    <>
-       <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>{titulo}</Card.Title>
+       <Card className={`text-white  ${clase}`} >
+       <Card.Img variant="top" src={url} className='w-25' />
+      <Card.Body >
+        <Card.Title > <h2 >{titulo}</h2></Card.Title>
         <Card.Text>
-            <h3>{precio}</h3>
-            {descripcion}
+            <h3 >{precio}</h3>
+            <ul >
+                <li >
+                    {primera}
+                </li>
+                <li > {segunda}</li>
+                <li> {tercera}</li>
+                <li > {cuarta}</li>
+                <li > {quinta}</li>
+            </ul>
         </Card.Text>
-        <Button variant="primary">{boton}</Button>
+        <div className='aver'>
+        <a href="">{boton}</a>
+        </div>
+      
       </Card.Body>
     </Card>
    </>

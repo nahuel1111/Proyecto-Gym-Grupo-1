@@ -8,15 +8,16 @@ import Imgs from '../components/Imgs';
 const ProductPage = () => {
     return (
         <>
+            <main className='main-Padre'>
             <Container className='mt-5'>
-                <Row>
-                    <div class="DivNombre container-fluid">
+            <div class="DivNombre">
                         <h3 class="">PACK ZEUS - 2 WHEY PROTEIN ZEUS DE 2 KG - (4 KILOS DE PROTEÍNA) CAPPUCCINO</h3>
                         <p class="opacity-50">SKU:4078870</p>
                     </div>
                     
+                <Row>
                         <Col>
-                            <Imgs url={'https://i.postimg.cc/8zkFtbB7/imagen-2024-01-23-175531892.png'} alt={'Foto Proteina'} width={'90%'} id={'Producto1'} />
+                            <Imgs url={'https://i.postimg.cc/8zkFtbB7/imagen-2024-01-23-175531892.png'} alt={'Foto Proteina'} width={'80%'} id={'Producto1'} />
                         </Col>
                         <Col>
                             <div className='divList p-4'>
@@ -69,7 +70,7 @@ const ProductPage = () => {
                                 </div>
                             </div>
             </Container>
-
+            </main>
 
         </>
     )

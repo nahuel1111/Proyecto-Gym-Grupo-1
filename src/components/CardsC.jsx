@@ -7,7 +7,7 @@ import 'remixicon/fonts/remixicon.css';
 
 
 
-const CardsC = ({url,titulo,precio,primera,segunda,tercera,cuarta,quinta,boton,clase}) => {
+const CardsC = ({url,titulo,precio, clase,primera,segunda,tercera,cuarta,quinta,boton}) => {
   return (
    <>
        <Card className={`text-white  ${clase}`} >

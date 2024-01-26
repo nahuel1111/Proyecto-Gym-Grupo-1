@@ -6,18 +6,21 @@ import HeroPage from '../pages/HeroPage'
 import Footerx from '../components/Footerx'
 
 
-
 const RoutesViews = () => {
   return (
     <>
+
     <Navbarx />
     <Routes>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/Product' element={<ProductPage />} />
-      <Route path='/HeroPage' element={<HeroPage />} />
+    <Route path='/' element={<HomePage/>} />
+    <Route path='/Product' element={<ProductPage/>}  />
+    <Route path='/HeroPage' element={<HeroPage/>}/>
+    
+
     </Routes>
     <Footerx />
-  </>)
+
+  </>  )
 }
 
 export default RoutesViews

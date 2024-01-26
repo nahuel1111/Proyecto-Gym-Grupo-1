@@ -6,7 +6,8 @@ const AdminUserPage = () => {
   return (
     <>
     <Container>
-    <h2>Usuarios</h2>
+    
+    <h2>Productos</h2>
     <div className='d-flex justify-content-center mt-3'>
         <Table striped bordered hover className='w-75'>
           <thead>

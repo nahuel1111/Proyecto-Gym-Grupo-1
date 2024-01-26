@@ -9,7 +9,7 @@ const ProductPage = () => {
     return (
         <>
             <main className='main-Padre'>
-            <Container className='mt-5'>
+            <Container>
             <div class="DivNombre">
                         <h3 class="">PACK ZEUS - 2 WHEY PROTEIN ZEUS DE 2 KG - (4 KILOS DE PROTEÍNA) CAPPUCCINO</h3>
                         <p class="opacity-50">SKU:4078870</p>

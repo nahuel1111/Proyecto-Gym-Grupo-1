@@ -4,6 +4,7 @@ import Navbarx from '../components/Navbarx'
 import HomePage from '../pages/HomePage'
 import ProductPage from '../pages/ProductPage'
 import HeroPage from '../pages/HeroPage'
+import PlansPage from '../pages/PlansPage'
 
 
 const RoutesViews = () => {
@@ -15,7 +16,7 @@ const RoutesViews = () => {
     <Route path='/' element={<HomePage/>} />
     <Route path='/Product' element={<ProductPage/>}  />
     <Route path='/HeroPage' element={<HeroPage/>}/>
-
+    <Route path='/PlansPage' element={<PlansPage/>}/>
 
     </Routes>
     

@@ -14,6 +14,8 @@ import AdminUserPage from '../pages/AdminUserPage'
 import AdminComment from '../pages/AdminComment'
 
 
+import AboutUs from '../pages/AboutUs'
+
 const RoutesViews = () => {
   return (
     <>
@@ -26,11 +28,14 @@ const RoutesViews = () => {
     <Route path='/PlansPage' element={<PlansPage/>}/>
     <Route path='/LoginPage' element={<LoginPage/>}/>
     <Route path='/RegisterPage' element={<RegisterPage/>}/>
+
     <Route path='/AdminPage' element={<AdminPage/>}/>
     <Route path='/AdminProduct' element={<AdminProductsPage/>}/>
     <Route path='/AdminProductClass' element={<AdminClassPage/>}/>
     <Route path='/AdminUser' element={<AdminUserPage/>}/>
     <Route path='/AdminComment' element={<AdminComment/>}/>
+
+    <Route path='/AboutUs' element={<AboutUs/>}/>
 
     </Routes>
     <Footerx />

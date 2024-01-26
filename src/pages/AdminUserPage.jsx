@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
-
+import Table from 'react-bootstrap/Table';
 const AdminUserPage = () => {
   return (
     <>

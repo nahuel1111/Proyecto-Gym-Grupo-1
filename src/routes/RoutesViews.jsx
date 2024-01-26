@@ -7,6 +7,8 @@ import Footerx from '../components/Footerx'
 
 
 import LoginPage from '../pages/LoginPage'
+import RegisterPage from '../pages/RegisterPage'
+
 
 const RoutesViews = () => {
   return (
@@ -19,6 +21,7 @@ const RoutesViews = () => {
     <Route path='/HeroPage' element={<HeroPage/>}/>
 
     <Route path='/LoginPage' element={<LoginPage/>}/>
+    <Route path='/RegisterPage' element={<RegisterPage/>}/>
 
 
     </Routes>

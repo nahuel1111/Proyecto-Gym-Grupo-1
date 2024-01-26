@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Imgs from '../components/Imgs';
 import CardsC from '../components/CardsC';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import 'remixicon/fonts/remixicon.css';
 
 const HomePage = () => {
@@ -58,9 +60,33 @@ const HomePage = () => {
 </div>
 
 <div className='mt-5'>
-  <CardsC url={"https://i.postimg.cc/zDhMzjHv/pricing1.png"} titulo={"clase yoga"} precio={"$2500"} primera={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} segunda={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} tercera={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} cuarta={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} quinta={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} boton={"Comprar clase"} clase={"background"} />
+  <CardsC url={"https://i.postimg.cc/zDhMzjHv/pricing1.png"} titulo={"clase yoga"} precio={"$2500"} clase={"background"} primera={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} segunda={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} tercera={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} cuarta={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} quinta={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} boton={"Comprar clase"}  />
+</div>
+<div className='mt-5 '>
+  <h2 className='text-light border-bajo'>hola como estas</h2>
+  <div className='caja-padre-form'>
+  <div className='mt-5 form-cambio'>
+<Form >
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="Enter email" />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Label>Ingresa tu comentario</Form.Label>
+      <textarea class="" maxlength="150" minlength="10" placeholder="Ej: Esto es compatible con..." name="" id="" cols="72" rows="6"></textarea>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+</div>
+  </div>
+
+
 </div>
 
+<div>xdddddddddddddddd</div>
 
     </Container>
     </main>

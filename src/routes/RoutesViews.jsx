@@ -19,6 +19,7 @@ const RoutesViews = () => {
 
     </Routes>
     <Footerx />
+    
 
   </>  )
 }

@@ -16,6 +16,7 @@ font-size: 100px;
 }
 main{
     background-color: #101616;
+    
 }
 .texto-cambio p{
 font-size: 17px;
@@ -65,4 +66,20 @@ text-align: center;
 .color span{
     color: white;
     margin-left: 10px;
+}
+.border-bajo{
+    border-bottom: 1px solid red;
+    width: 20%;
+   display: inline-block;
+   padding-bottom: 10px;
+}
+.caja-padre-form{
+    display: flex;
+    justify-content: center;
+}
+.form-cambio{
+    background-color: gray;
+    padding: 50px;
+    width: 50%;
+    margin-bottom: 70px;
 }

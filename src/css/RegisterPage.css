@@ -1,0 +1,28 @@
+.login-card {
+    width: 50%;
+  }
+  
+  .login-form {
+    padding: 20px;
+    background: transparent;
+    backdrop-filter: blur(2px); 
+
+  }
+
+
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+
+.login-form {
+  padding: 20px;
+  border: 2px solid white; 
+  border-radius: 10px; 
+}
+

@@ -1,6 +1,41 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: #101616;
+.Div-Musculacion{
+    color: white;
+    text-align: center;
+    transition: 0.3s;
+    margin-top: 25px;
+    margin-left: 100px;
+    margin-top: 10px; 
+}
+
+.Descripcion-Plan{
+    display: flex;
+    justify-content: center;
+    background-color: #ABCF2F;
+    color: #101616;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid #586c17;
+    padding: 20px;
+    margin-top: 80px;
+}
+
+.Imagen-Principal-Musculatura{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.Imagen-Principal img{
+    width: 2000px;
+    height: 600px;
+}
+
+.Imagen-Secundaria-Musculatura{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
 }

@@ -1,0 +1,36 @@
+/* LoginPage.css */
+/* LoginPage.css */
+
+
+  
+  .login-card {
+    width: 50%;
+  }
+  
+
+  .login-form {
+    padding: 20px;
+    background: transparent;
+    backdrop-filter: blur(2px); 
+
+  }
+
+  
+  /* LoginPage.css */
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+
+.login-form {
+  padding: 20px;
+  border: 2px solid white; /* Borde blanco */
+  border-radius: 10px; /* Borde redondeado */
+}
+
+/* Resto del contenido... */

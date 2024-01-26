@@ -6,6 +6,8 @@ import HeroPage from '../pages/HeroPage'
 import Footerx from '../components/Footerx'
 
 
+import LoginPage from '../pages/LoginPage'
+
 const RoutesViews = () => {
   return (
     <>
@@ -15,11 +17,14 @@ const RoutesViews = () => {
     <Route path='/' element={<HomePage/>} />
     <Route path='/Product' element={<ProductPage/>}  />
     <Route path='/HeroPage' element={<HeroPage/>}/>
-    
+
+    <Route path='/LoginPage' element={<LoginPage/>}/>
+
 
     </Routes>
     <Footerx />
     
+
 
   </>  )
 }

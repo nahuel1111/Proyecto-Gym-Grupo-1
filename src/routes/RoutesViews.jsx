@@ -7,7 +7,7 @@ import PlansPage from '../pages/PlansPage'
 import Footerx from '../components/Footerx'
 import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
-
+import AboutUs from '../pages/AboutUs'
 
 const RoutesViews = () => {
   return (
@@ -21,7 +21,7 @@ const RoutesViews = () => {
     <Route path='/PlansPage' element={<PlansPage/>}/>
     <Route path='/LoginPage' element={<LoginPage/>}/>
     <Route path='/RegisterPage' element={<RegisterPage/>}/>
-
+    <Route path='/AboutUs' element={<AboutUs/>}/>
     </Routes>
     <Footerx />
     

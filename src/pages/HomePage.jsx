@@ -86,8 +86,7 @@ const HomePage = () => {
 
 </div>
 
-<div>holaaaaaaaaaa</div>
-
+<div>xdddddddddddddddd</div>
 
     </Container>
     </main>

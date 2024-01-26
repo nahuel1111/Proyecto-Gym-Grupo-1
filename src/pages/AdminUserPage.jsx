@@ -1,11 +1,13 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
+import '../css/AdminPage.css'
 const AdminUserPage = () => {
   return (
     <>
     <Container>
-    <h2>Usuarios</h2>
+    
+    <h2>Productos</h2>
     <div className='d-flex justify-content-center mt-3'>
         <Table striped bordered hover className='w-75'>
           <thead>

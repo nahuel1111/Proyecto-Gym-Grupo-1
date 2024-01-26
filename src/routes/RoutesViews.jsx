@@ -12,7 +12,7 @@ import AdminProductsPage from '../pages/AdminProductsPage'
 import AdminClassPage from '../pages/AdminClassPage'
 import AdminUserPage from '../pages/AdminUserPage'
 import AdminComment from '../pages/AdminComment'
-
+import ContactPage from '../pages/ContactPage'
 
 import AboutUs from '../pages/AboutUs'
 
@@ -36,6 +36,8 @@ const RoutesViews = () => {
     <Route path='/AdminComment' element={<AdminComment/>}/>
 
     <Route path='/AboutUs' element={<AboutUs/>}/>
+
+    <Route path='/ContactPage' element={<ContactPage/>}/>
 
     </Routes>
     <Footerx />

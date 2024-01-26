@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 const AboutUs = () => {
   return (
     <main className="main py-3">
-      <div className="container">
+      <div className="container1">
 
         <section className="box">
           <img src="https://i.postimg.cc/YSqGw6Cf/marti.jpg" width="100px" alt="" className="box-img" />

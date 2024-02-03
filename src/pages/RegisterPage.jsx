@@ -16,11 +16,20 @@ const RegisterPage = () => {
               </Form.Text>
             </Form.Group>
 
-            <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
+            {/* <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
+            </Form.Group> */}
 
+          <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="Name" placeholder="Name" />
+          </Form.Group>
+
+          <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
+            <Form.Label>Phone</Form.Label>
+            <Form.Control type="Phone" placeholder="Phone" />
+          </Form.Group>
 
             <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>

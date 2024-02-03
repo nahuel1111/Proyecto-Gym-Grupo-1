@@ -14,14 +14,21 @@ import Form from 'react-bootstrap/Form';
 const AdminProductsPage = () => {
   const [products, setProducts] = useState([]) 
   const [show, setShow] = useState(false)
-  const [showupdate, setShowUpdate] = useState(false)
+ 
+ 
   const [productState, setProductState] = useState({})
+  const [showUpdate, setShowUpdate] = useState(false)
+
+const handleCloseUpdate = () => setShowUpdate(false)
+const handleShowUpdate = (productData) => {
+  setShowUpdate(true)
+  setProductState(productData)
+}
 
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const HandleCloseUpdate = ()=> setShow(false)
-  const HandleHowUpdate = ()=> setShow(true)
+
 const GetProducts = async()  => {
 
   const AllProducts = await clienteAxios.get("/products") 
@@ -31,11 +38,12 @@ const GetProducts = async()  => {
 
 const handleChange =  (ev)=>{
   setProductState({ ...productState, [ev.target.name]: ev.target.value })
+  
 }
 const handleImageChange = (ev) => {
-  const file = ev.target.files[0];
-  setProductState({ ...productState, imagen: file });
-};
+  const file = ev.target.files[0]
+  setProductState({ ...productState, imagen: file })
+}
 
 const addProduct = async (ev) => {
   ev.preventDefault();
@@ -65,7 +73,26 @@ const addProduct = async (ev) => {
     console.error("Error al agregar el producto:", error)
   }
 }
-
+const updateProduct = async(ev)=>{
+try {
+  ev.preventDefault()
+  const formData = new FormData()
+    formData.append('titulo', productState.titulo)
+    formData.append('precio', productState.precio)
+    formData.append('descripcion', productState.descripcion)
+    formData.append('imagen', productState.imagen)
+  const updateProduct= await clienteAxios.put(`/products/${productState._id}`, formData, config)
+  if (updateProduct.status === 200) {
+    handleCloseUpdate()
+    Swal.fire({
+      title: "Producto actualizado con exito!",
+      icon: "success"
+    });
+  }
+} catch (error) {
+  console.log(error)
+}
+}
 
 const deleteProduct = async(idProduct) =>{
   try {
@@ -160,26 +187,76 @@ useEffect(() => {
               <td>{product.descripcion}</td>
               <td><Imgs url={product.imagen} alt={'producto'} width={'50%'}  /></td>
               <td>
-              <Button variant="primary" onClick={handleShow}>
-       Editar
-      </Button>
+              <Button variant="primary" onClick={() => handleShowUpdate(product)}>
+  Editar</Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal></td>
+<Modal show={showUpdate} onHide={handleCloseUpdate}>
+  <Modal.Header closeButton>
+    <Modal.Title>Editar Producto</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <Form>
+      <Form.Group className="mb-3" controlId="formBasicTitle">
+        <Form.Label>Nombre del Producto</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Ingrese el nombre del producto"
+          value={productState.titulo}
+          name="titulo"
+          onChange={handleChange}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPrice">
+        <Form.Label>Precio</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Ingrese el precio"
+          value={productState.precio}
+          name="precio"
+          onChange={handleChange}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicDescription">
+        <Form.Label>Descripción</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Ingrese la descripción"
+          value={productState.descripcion}
+          name="descripcion"
+          onChange={handleChange}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicImage">
+        <Form.Label>Imagen</Form.Label>
+        <Form.Control
+          type="file"
+          onChange={handleImageChange}
+          accept="image/*"
+        />
+ {typeof productState.imagen === 'string' ? (
+  <Imgs url={productState.imagen} alt={'producto'} width={'50%'} />
+) : (
+  <p>Imagen no disponible o cambiada</p>
+)}
+        
+      </Form.Group>
+    </Form>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={handleCloseUpdate}>
+      Cerrar
+    </Button>
+    <Button variant="primary" onClick={updateProduct}>
+      Guardar Cambios
+    </Button>
+  </Modal.Footer>
+</Modal>
+</td>
               <td>
-                             <button className='btn btn-danger' onClick={() => deleteProduct(product._id)}>Eliminar</button>
+     <button className='btn btn-danger' onClick={() => deleteProduct()}>Eliminar</button>
               </td>
             
                     </tr>

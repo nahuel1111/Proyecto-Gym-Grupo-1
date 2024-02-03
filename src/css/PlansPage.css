@@ -39,3 +39,27 @@
     margin-bottom: 40px;
     
 }
+
+.Div-Reserva-Turno{
+    color: white;
+    transition: 0.3s;
+    margin-top: 25px;
+    margin-left: 100px;
+    margin-top: 10px; 
+}
+
+.Form-Hora{
+    background-color: #101616;
+    color: white;
+    border: #586c17 solid 3px;
+}
+
+.Nombre-Profesor{
+    color: white;
+}
+
+.Profe-Plan-Musculacion{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}

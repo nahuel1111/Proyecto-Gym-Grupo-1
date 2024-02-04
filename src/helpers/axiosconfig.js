@@ -20,4 +20,6 @@ export const jsonConfig = {
 };
 
 
-export default clienteAxios
+export default clienteAxios 
+
+

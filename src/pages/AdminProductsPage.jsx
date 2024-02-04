@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import '../css/AdminPage.css'
 import { useEffect, useState } from 'react'; 
-import clienteAxios, { config } from '../helpers/axiosconfig';
+ import clienteAxios, { config } from '../helpers/axiosconfig'; 
 import Swal from 'sweetalert2';
 import Imgs from '../components/Imgs';
 import Button from 'react-bootstrap/Button';

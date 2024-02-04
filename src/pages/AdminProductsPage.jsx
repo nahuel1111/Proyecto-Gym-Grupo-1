@@ -1,0 +1,197 @@
+import React from 'react'
+import Container from 'react-bootstrap/Container';
+import Table from 'react-bootstrap/Table';
+import '../css/AdminPage.css'
+import { useEffect, useState } from 'react'; 
+ import clienteAxios, { config } from '../helpers/axiosconfig'; 
+import Swal from 'sweetalert2';
+import Imgs from '../components/Imgs';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+
+
+const AdminProductsPage = () => {
+  const [products, setProducts] = useState([]) 
+  const [show, setShow] = useState(false)
+  const [showupdate, setShowUpdate] = useState(false)
+  const [productState, setProductState] = useState({})
+
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const HandleCloseUpdate = ()=> setShow(false)
+  const HandleHowUpdate = ()=> setShow(true)
+const GetProducts = async()  => {
+
+  const AllProducts = await clienteAxios.get("/products") 
+  setProducts(AllProducts.data.getAllProducts)
+}
+
+
+const handleChange =  (ev)=>{
+  setProductState({ ...productState, [ev.target.name]: ev.target.value })
+}
+const handleImageChange = (ev) => {
+  const file = ev.target.files[0];
+  setProductState({ ...productState, imagen: file });
+};
+
+const addProduct = async (ev) => {
+  ev.preventDefault();
+
+  try {
+    if (!productState.titulo || !productState.precio || !productState.imagen) {
+      console.error("Por favor, completa los campos obligatorios.");
+      return;
+    }
+
+    const formData = new FormData()
+    formData.append('titulo', productState.titulo)
+    formData.append('precio', productState.precio)
+    formData.append('descripcion', productState.descripcion)
+    formData.append('imagen', productState.imagen)
+
+    await clienteAxios.post("/products", formData)
+   
+      handleClose()
+      Swal.fire({
+        title: "Producto Agregado",
+        text: "El producto se agrego correctamente.",
+        icon: "success"
+      })
+    
+  } catch (error) {
+    console.error("Error al agregar el producto:", error)
+  }
+}
+
+
+const deleteProduct = async(idProduct) =>{
+  try {
+    Swal.fire({
+      title: "Estas seguro de que quieres eliminar a este producto?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "SI, estoy seguro!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const deleteProduct = await clienteAxios.delete(`/products/${idProduct}`, config)
+      
+        if(deleteProduct.status === 200){
+          Swal.fire({
+            title: "Eliminado!",
+            text: "El producto se elimino correctamente.",
+            icon: "success"
+          })
+        }
+      }
+    });
+   } catch (error) {
+    console.log(error)
+   }
+}
+
+useEffect(() => {
+  GetProducts()
+}, [])
+  return (
+    <>
+    <Container>
+    <h2>Productos</h2> 
+
+      <Button variant="primary" onClick={handleShow}>
+        Crear Producto
+              </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Producto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> <Form>
+        <Form.Group className="mb-3" controlId="formBasicTitle">
+  <Form.Label>Nombre del Producto</Form.Label>
+  <Form.Control type="text" placeholder="Ingrese el nombre del producto"  name='titulo' onChange={handleChange} />
+</Form.Group>
+
+<Form.Group className="mb-3" controlId="formBasicPrice">
+  <Form.Label>Precio</Form.Label>
+  <Form.Control type="text" placeholder="Ingrese el precio"  name='precio' onChange={handleChange} />
+</Form.Group>
+<Form.Group className="mb-3" controlId="formBasicPrice">
+  <Form.Label>Descripcion</Form.Label>
+  <Form.Control type="text" placeholder="Ingrese el precio"  name='descripcion' onChange={handleChange} />
+</Form.Group>
+<Form.Group className="mb-3" controlId="formBasicImage">
+  <Form.Label>Imagen</Form.Label>
+  <Form.Control type="file" onChange={handleImageChange} accept="image/*" />
+</Form.Group>
+
+    </Form>
+    </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={addProduct}>
+            Guardar datos
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    <div className='d-flex justify-content-center mt-3'>
+        <Table striped bordered hover className='w-75'>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Descripcion</th>
+              <th>Imagen</th>
+              <th>Editar/Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+          {
+            products.map((product) =>
+            
+             <tr key={product._id}>
+              <td>{product._id}</td>
+              <td>{product.titulo}</td>
+              <td>{product.precio}</td>
+              <td>{product.descripcion}</td>
+              <td><Imgs url={product.imagen} alt={'producto'} width={'50%'}  /></td>
+              <td>
+              <Button variant="primary" onClick={handleShow}>
+       Editar
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal></td>
+              <td>
+                             <button className='btn btn-danger' onClick={() => deleteProduct(product._id)}>Eliminar</button>
+              </td>
+            
+                    </tr>
+            )
+          }
+          </tbody>
+        </Table>
+      </div>
+    </Container>
+   
+    </>
+  )
+}
+
+export default AdminProductsPage

@@ -3,27 +3,28 @@ import '../css/RegisterPage.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
-
+import clienteAxios, { config } from '../helpers/axiosconfig';
+import {useState } from 'react'; 
 
 const RegisterPage = () => {
+
   const [formValues, setFormValues] = useState({
     user: '',
     email: '',
-    phone: '',
     pass: '',
     rpass: ''
   })
-
   const handleChange = (ev) => {
     setFormValues({ ...formValues, [ev.target.name]: ev.target.value })
   }
 
   const handleClick = async (ev) => {
     try {
+      console.log ('estoy entrando a la funcion')
       ev.preventDefault()
-      const { user, email, phone, pass, rpass } = formValues
+      const { user, email, pass, rpass } = formValues
 
-      if (!user || !email || !pass || !rpass || !phone) {
+      if (!user || !email || !pass || !rpass) {
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -31,39 +32,34 @@ const RegisterPage = () => {
         });
       } else {
         if (pass === rpass) {
+          console.log ('estoy entrando a funcion')
           const sendFormRegister = await clienteAxios.post('/users', {
             nombreUsuario: user,
             emailUsuario: email,
-            telefono: phone,
-            contrasenia: pass
+            contrasenia: pass,
           }, config)
         }
       }
     } catch (error) {
       console.log(error)
     }
+  }
     return (
       <div className="login-container">
         <div className="d-flex align-items-center justify-content-center wrap">
-          <Form className="login-form">
+          <Form className="login-form" onSubmit={handleClick}>
             <Form.Group className="mb-3 text-white" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" name='email' value={formValues.email} onChange={handleChange} placeholder="Enter email" />
               <Form.Text className="text-muted text-white">
-                We'll never share your email with anyone else.
+              Nunca compartiremos su correo electrónico con nadie más.
               </Form.Text>
             </Form.Group>
 
-            <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
+            <Form.Group className="mb-3 text-white" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="Name" name='user' value={formValues.user} onChange={handleChange} placeholder="Name" />
+              <Form.Control type="text" name='user' value={formValues.user} onChange={handleChange} placeholder="Name" />
             </Form.Group>
-
-            <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
-              <Form.Label>Phone</Form.Label>
-              <Form.Control type="Phone" name='phone' value={formValues.phone} onChange={handleChange} placeholder="Phone" />
-            </Form.Group>
-
 
             <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
@@ -75,14 +71,13 @@ const RegisterPage = () => {
               <Form.Control type="password" name='rpass' value={formValues.rpass} onChange={handleChange} placeholder="Confirm Password" />
             </Form.Group>
 
-            <Button variant="success" type="submit" onClick={handleClick}>
+            <Button variant="success" type="submit">
               Enviar
             </Button>
           </Form>
         </div>
       </div>
     )
-  }
 }
 
 export default RegisterPage;

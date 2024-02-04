@@ -12,7 +12,12 @@ export const config = {
     'auth':`Bearer ${token}`
   }
 }
-
+export const jsonConfig = {
+  headers: {
+    'content-type':'application/json',
+    'auth': `Bearer ${token}`
+  }
+};
 
 
 export default clienteAxios

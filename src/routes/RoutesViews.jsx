@@ -33,7 +33,7 @@ const RoutesViews = () => {
     <Route path='/AdminProduct' element={<AdminProductsPage/>}/>
     <Route path='/AdminProductClass' element={<AdminClassPage/>}/>
     <Route path='/AdminUser' element={<AdminUserPage/>}/>
-    <Route path='/AdminComment' element={<AdminComment/>}/>
+    <Route path='/AdminComment/:id' element={<AdminComment/>}/>
 
     <Route path='/AboutUs' element={<AboutUs/>}/>
 

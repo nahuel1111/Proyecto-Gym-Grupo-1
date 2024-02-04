@@ -208,9 +208,7 @@ useEffect(() => {
               <td>{product.descripcion}</td>
               <td><Imgs url={product.imagen} alt={'producto'} width={'50%'}  /></td>
               <td>
-              <Button variant="primary" onClick={() => handleShowUpdate(product)}>
-  Editar</Button>
-
+              <Button variant="primary" onClick={() => handleShowUpdate(product)}> Editar</Button>
 <Modal show={showUpdate} onHide={handleCloseUpdate}>
   <Modal.Header closeButton>
     <Modal.Title>Editar Producto</Modal.Title>

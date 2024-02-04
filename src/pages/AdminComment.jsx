@@ -1,28 +1,40 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
-import Table from 'react-bootstrap/Table';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react'; 
+import clienteAxios, { jsonConfig } from '../helpers/axiosconfig';
+import Button from 'react-bootstrap/Button';
+
 import '../css/AdminPage.css'
 const AdminComment = () => {
+  const [comment, setComment] = useState([])
+
+  const use = useParams()
+  
+
+  const Destacado = async ()=>{
+    
+  }
+
+const GetAllComments = async ()=>{
+  const Allgetcomment = await clienteAxios.get(`/users/comment/${use.id}`) 
+  setComment(Allgetcomment.data.comentario)
+}
+
+
+  useEffect(() => {
+    GetAllComments()
+  },[])
+
   return (
     <>
     <Container>
     <h2>Comentarios</h2>
-    <div className='d-flex justify-content-center mt-3'>
-        <Table striped bordered hover className='w-75'>
-          <thead>
-            <tr>
-              <th>Titulo</th>
-              <th>Precio Name</th>
-              <th>Codigo</th>
-              <th>Imagen</th>
-              <th>Editar/Eliminar</th>
-            </tr>
-          </thead>
-          <tbody>
-          
-          </tbody>
-        </Table>
-      </div>
+    <div> {comment.map ((comentarios)=>
+    <p> {comentarios}    <Button variant="primary" onClick={Destacado}>
+    Destacar
+  </Button>    </p>
+    )}  </div><br />      
     </Container>
    
     </>

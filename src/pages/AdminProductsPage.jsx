@@ -18,6 +18,7 @@ const AdminProductsPage = () => {
  
   const [productState, setProductState] = useState({})
   const [showUpdate, setShowUpdate] = useState(false)
+  const [update, setUpdate]= useState(false)
 
 const handleCloseUpdate = () => setShowUpdate(false)
 const handleShowUpdate = (productData) => {
@@ -68,6 +69,12 @@ const addProduct = async (ev) => {
         text: "El producto se agrego correctamente.",
         icon: "success"
       })
+      if(update==false){
+        setUpdate(true)
+      }else{
+        setUpdate(false)
+      }
+     
     
   } catch (error) {
     console.error("Error al agregar el producto:", error)
@@ -76,19 +83,27 @@ const addProduct = async (ev) => {
 const updateProduct = async(ev)=>{
 try {
   ev.preventDefault()
+  
   const formData = new FormData()
     formData.append('titulo', productState.titulo)
     formData.append('precio', productState.precio)
     formData.append('descripcion', productState.descripcion)
     formData.append('imagen', productState.imagen)
-  const updateProduct= await clienteAxios.put(`/products/${productState._id}`, formData, config)
-  if (updateProduct.status === 200) {
+  const updateProduct= await clienteAxios.put(`/products/${productState._id}`,formData,config)
+  if (updateProduct.status === 200){
     handleCloseUpdate()
+    if(update==false){
+      setUpdate(true)
+    }else{
+      setUpdate(false)
+    }
     Swal.fire({
       title: "Producto actualizado con exito!",
       icon: "success"
     });
   }
+ 
+  
 } catch (error) {
   console.log(error)
 }
@@ -106,6 +121,7 @@ const deleteProduct = async(idProduct) =>{
     }).then(async (result) => {
       if (result.isConfirmed) {
         const deleteProduct = await clienteAxios.delete(`/products/${idProduct}`, config)
+        
       
         if(deleteProduct.status === 200){
           Swal.fire({
@@ -113,6 +129,11 @@ const deleteProduct = async(idProduct) =>{
             text: "El producto se elimino correctamente.",
             icon: "success"
           })
+          if(update==false){
+            setUpdate(true)
+          }else{
+            setUpdate(false)
+          }
         }
       }
     });
@@ -123,7 +144,7 @@ const deleteProduct = async(idProduct) =>{
 
 useEffect(() => {
   GetProducts()
-}, [])
+},[update])
   return (
     <>
     <Container>
@@ -168,7 +189,7 @@ useEffect(() => {
         <Table striped bordered hover className='w-75'>
           <thead>
             <tr>
-              <th>id</th>
+              
               <th>Producto</th>
               <th>Precio</th>
               <th>Descripcion</th>
@@ -181,7 +202,7 @@ useEffect(() => {
             products.map((product) =>
             
              <tr key={product._id}>
-              <td>{product._id}</td>
+     
               <td>{product.titulo}</td>
               <td>{product.precio}</td>
               <td>{product.descripcion}</td>
@@ -256,7 +277,7 @@ useEffect(() => {
 </Modal>
 </td>
               <td>
-     <button className='btn btn-danger' onClick={() => deleteProduct()}>Eliminar</button>
+              <button className='btn btn-danger' onClick={() => deleteProduct(product._id)}>Eliminar</button>
               </td>
             
                     </tr>

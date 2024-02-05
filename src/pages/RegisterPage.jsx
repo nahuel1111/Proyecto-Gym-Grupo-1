@@ -47,7 +47,7 @@ const RegisterPage = () => {
     return (
       <div className="login-container">
         <div className="d-flex align-items-center justify-content-center wrap">
-          <Form className="login-form" onSubmit={handleClick}>
+          <Form className="login-form">
             <Form.Group className="mb-3 text-white" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" name='email' value={formValues.email} onChange={handleChange} placeholder="Enter email" />
@@ -71,7 +71,7 @@ const RegisterPage = () => {
               <Form.Control type="password" name='rpass' value={formValues.rpass} onChange={handleChange} placeholder="Confirm Password" />
             </Form.Group>
 
-            <Button variant="success" type="submit">
+            <Button variant="success" type="submit" onClick={handleClick}>
               Enviar
             </Button>
           </Form>

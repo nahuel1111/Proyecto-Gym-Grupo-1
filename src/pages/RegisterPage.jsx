@@ -3,7 +3,7 @@ import '../css/RegisterPage.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
-import clienteAxios, { config } from '../helpers/axiosconfig';
+import clienteAxios, { jsonConfig } from '../helpers/axiosconfig';
 import {useState } from 'react'; 
 
 const RegisterPage = () => {
@@ -37,7 +37,7 @@ const RegisterPage = () => {
             nombreUsuario: user,
             emailUsuario: email,
             contrasenia: pass,
-          }, config)
+          }, jsonConfig)
         }
       }
     } catch (error) {

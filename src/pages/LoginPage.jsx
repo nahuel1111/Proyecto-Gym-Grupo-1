@@ -42,12 +42,12 @@ const LoginPage = () => {
           sessionStorage.setItem('token', JSON.stringify(sendFormLogin.data.token))
           sessionStorage.setItem('role', JSON.stringify(sendFormLogin.data.role))
           sessionStorage.setItem('idUsuario', JSON.stringify(sendFormLogin.data.idUsuario))
-          navigate('/admin')
+          navigate('/AdminPage')
          }else{
           sessionStorage.setItem('token', JSON.stringify(sendFormLogin.data.token))
           sessionStorage.setItem('role', JSON.stringify(sendFormLogin.data.role))
           sessionStorage.setItem('idUsuario', JSON.stringify(sendFormLogin.data.idUsuario))
-          navigate('/user')
+          navigate('/')
          }
       }
     }

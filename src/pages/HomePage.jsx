@@ -5,11 +5,22 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Imgs from '../components/Imgs';
 import CardsC from '../components/CardsC';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'remixicon/fonts/remixicon.css';
+import { useEffect, useState } from 'react'; 
+import clienteAxios from '../helpers/axiosconfig';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const HomePage = () => {
+  const [classlist, setClasslist] = useState([]) 
+  const GetClass = async ()=>{
+    const AllClass = await clienteAxios.get("/Class") 
+    setClasslist(AllClass.data.GetAllClass)
+  }
+  useEffect(() => {
+    GetClass()
+  },[])
   return (
     <>
     <main className='body pt-5'>
@@ -60,7 +71,35 @@ const HomePage = () => {
 </div>
 
 <div className='mt-5'>
-  <CardsC url={"https://i.postimg.cc/zDhMzjHv/pricing1.png"} titulo={"clase yoga"} precio={"$2500"} clase={"background"} primera={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} segunda={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} tercera={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} cuarta={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} quinta={<i class="ri-checkbox-circle-line color"><span>hola</span></i>} boton={"Comprar clase"}  />
+<Row>
+{classlist.map((clase, index) => (
+  <Col md={4} className='mt-5' key={index}>
+    {(index + 1) % 3 === 0 ? (
+      <ComponenteDiferente1 />
+    ) : (index + 1) % 2 === 0 ? (
+      <ComponenteDiferente2 />
+    ) : (
+      <CardsC
+        url={"https://i.postimg.cc/zDhMzjHv/pricing1.png"}
+        titulo={clase.Titulo}
+        precio={clase.Precio}
+        clase={"background"}
+        primera={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
+        segunda={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
+        tercera={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
+        cuarta={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
+        quinta={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
+        boton= {           
+        <Link to={`/PlansPage/${clase._id}`}></Link>
+     }
+      />
+      
+    )}
+  
+    
+  </Col>
+))}
+  </Row>
 </div>
 <div className='mt-5 '>
   <h2 className='text-light border-bajo'>hola como estas</h2>
@@ -86,7 +125,6 @@ const HomePage = () => {
 
 </div>
 
-<div>xdddddddddddddddd</div>
 
     </Container>
     </main>

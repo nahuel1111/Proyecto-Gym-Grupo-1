@@ -25,7 +25,7 @@ const RoutesViews = () => {
     <Route path='/' element={<HomePage/>} />
     <Route path='/Product' element={<ProductPage/>}  />
     <Route path='/HeroPage' element={<HeroPage/>}/>
-    <Route path='/PlansPage' element={<PlansPage/>}/>
+    <Route path='/PlansPage/:id' element={<PlansPage/>}/>
     <Route path='/LoginPage' element={<LoginPage/>}/>
     <Route path='/RegisterPage' element={<RegisterPage/>}/>
 

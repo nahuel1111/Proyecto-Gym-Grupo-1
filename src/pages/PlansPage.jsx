@@ -5,35 +5,53 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Imgs from '../components/Imgs';
 import Form from 'react-bootstrap/Form';
+import { useParams } from 'react-router-dom';
+import clienteAxios from '../helpers/axiosconfig';
+import { useEffect, useState } from 'react'; 
 
-const PlansPage = () => {
- 
+const PlansPage = () => { 
+  const [classlist, setClassList] = useState([]) 
+  const use = useParams()
+const GetAllClass = async () => {
+  const AllClass = await clienteAxios.get (`/Class/${use.id}`) 
+setClassList(AllClass.data.GetClass)
+}
+ useEffect(() => {
+  GetAllClass()
+},[])
   return (
     <main>
       <Container>
         <hr className='text-light mt-2' />
-        <div class="Div-Musculacion">
-          <h3 class="">"Plan Musculacion"</h3>
-          <p class="opacity-50">"Desafía tus límites con nuestro plan de entrenamiento pesado y alcanza un nivel superior de fuerza y resistencia."</p>
-        </div>
-        <hr className='text-light' />
-        <Row>
-          <div className='Imagen-Principal-Musculatura'>
-            <Imgs url={'https://i.postimg.cc/s2ymgTRy/foto-blanco-negro-hombre-musculoso-usando-tiza-deportiva-antes-levantar-pesa-entrenamiento-pesas-gim.jpg'} alt={'Foto de Mancuernas'} id={'Plan-Musculacion-1'} />
-          </div>
-          <Col>
-            <div>
-              <li className='Descripcion-Plan'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius porro placeat at maiores beatae maxime recusandae, vel impedit aut nequ</li>
-            </div>
-          </Col>
-          <Col>
-            <div className='Imagen-Secundaria-Musculatura'>
-              <Imgs url={'https://i.postimg.cc/RZ6gNW8C/joven-ropa-deportiva-clase-ejercicios-gimnasio.jpg'} alt={'Imagen-Profesor'} width={'80%'} id={'Plan Musculacion 2'} />
-            </div>
-          </Col>
-          <hr className='text-light' />
-          <hr className='text-light' />
-        </Row>
+        {classlist.map((Clase)=> 
+   <div>   <div class="Div-Musculacion">
+        
+   <h3 class="">{Clase.Titulo}</h3>
+   <p class="opacity-50">"Desafía tus límites con nuestro plan de entrenamiento pesado y alcanza un nivel superior de fuerza y resistencia."</p>
+ </div>
+ <hr className='text-light' />
+ <Row>
+   <div className='Imagen-Principal-Musculatura'>
+     <Imgs url={Clase.imagen} alt={'Foto de Mancuernas'} id={'Plan-Musculacion-1'} />
+   </div>
+   <Col>
+     <div>
+       <li className='Descripcion-Plan'>{Clase.Descripcion}</li>
+     </div>
+   </Col>
+   <Col>
+     <div className='Imagen-Secundaria-Musculatura'>
+       <Imgs url={'https://i.postimg.cc/RZ6gNW8C/joven-ropa-deportiva-clase-ejercicios-gimnasio.jpg'} alt={'Imagen-Profesor'} width={'80%'} id={'Plan Musculacion 2'} />
+     </div>
+   </Col>
+   <hr className='text-light' />
+   <hr className='text-light' />
+ </Row></div>
+    
+       )}
+    
+        
+   
         <div className='Div-Reserva-Turno'>
           <h2>° Reserva Tu Turno:</h2>
         </div>

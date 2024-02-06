@@ -15,6 +15,7 @@ import AdminComment from '../pages/AdminComment'
 import ContactPage from '../pages/ContactPage'
 
 import AboutUs from '../pages/AboutUs'
+import AdminTeacherPage from '../pages/AdminTeacherPage'
 
 const RoutesViews = () => {
   return (
@@ -34,6 +35,7 @@ const RoutesViews = () => {
     <Route path='/AdminProductClass' element={<AdminClassPage/>}/>
     <Route path='/AdminUser' element={<AdminUserPage/>}/>
     <Route path='/AdminComment/:id' element={<AdminComment/>}/>
+    <Route path='/AdminTeacher' element={<AdminTeacherPage/>}/>
 
     <Route path='/AboutUs' element={<AboutUs/>}/>
 

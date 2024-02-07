@@ -22,7 +22,6 @@ import Products from '../pages/Products'
 const RoutesViews = () => {
   return (
     <>
-
     <Navbarx />
     <Routes>
     <Route path='/HomePage' element={ <PrivateRoute role='user'><HomePage/></PrivateRoute>} />

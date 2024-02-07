@@ -45,6 +45,7 @@ const AdminClassPage = () => {
         formData.append('Titulo', classlistState.Titulo)
         formData.append('Precio', classlistState.Precio)
         formData.append('Descripcion', classlistState.Descripcion)
+        formData.append('Horario', classlistState.Horario)
         formData.append('imagen', classlistState.imagen)
       const updateClass= await clienteAxios.put(`/Class/${classlistState._id}`,formData,config)
       if (updateClass.status === 200){
@@ -84,7 +85,6 @@ const GetAllClass = async ()=>{
               <th>Descripcion</th>
               <th>Precio</th>
               <th>Horario</th>
-              <th>Fecha</th>
               <th>imagen</th>
               <th>Editar</th>
               <th> Usuarios</th>
@@ -97,7 +97,6 @@ const GetAllClass = async ()=>{
       <td>{clase.Descripcion}</td>
       <td>{clase.Precio}</td>
       <td>{clase.Horario}</td>
-      <td>{clase.Fecha}</td>
       <td><Imgs url={clase.imagen} alt={'clase'} width={'20%'}  /></td>
       <td>   <Button variant="primary" onClick={() => handleShowUpdate(clase)}> Editar</Button>
 <Modal show={showUpdate} onHide={handleCloseUpdate}>
@@ -134,6 +133,16 @@ const GetAllClass = async ()=>{
           placeholder="Ingrese la descripción"
           value={classlistState.Descripcion}
           name="Descripcion"
+          onChange={handleChange}
+        />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicPrice">
+        <Form.Label>Horario</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Ingrese el horario"
+          value={classlistState.Horario}
+          name="Horario"
           onChange={handleChange}
         />
       </Form.Group>

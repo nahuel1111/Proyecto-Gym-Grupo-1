@@ -35,49 +35,76 @@ const handleChange =  (ev)=>{
 
 
 const addUser = async (ev) => {
-  ev.preventDefault()
-  try {
-    await clienteAxios.post("/users", userState)
-   
-      handleClose()
-       if(update==false){
-            setUpdate(true)
-          }else{
-            setUpdate(false)
-          }
-      Swal.fire({
-        title: "Producto Agregado",
-        text: "El producto se agrego correctamente.",
-        icon: "success"
-      })
   
-  } catch (error) {
-    console.error("Error al agregar el usuario:", error)
-  }
-
   try {
-     
+    ev.preventDefault()
+    if(!userState.emailUsuario  || !userState.nombreUsuario || !userState.contrasenia || !userState.role ){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Algun campo esta vacio!",
+        
+      }
+        )  };
+
+        if(userState.role=="user" || userState.role=="admin" ){
+          await clienteAxios.post("/users", userState)
+   
+          handleClose()
+           if(update==false){
+                setUpdate(true)
+              }else{
+                setUpdate(false)
+              }
+          Swal.fire({
+            title: "Usuario Agregado",
+            text: "El usuario se agrego correctamente.",
+            icon: "success"
+          })
+      
+        }else{
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "solo puede ser admin o user",
+            
+          }
+            )
+        }
+
+    
+    
   } catch (error) {
     console.error("Error al agregar el usuario:", error)
   }
 }
 const updateUser = async (ev)=>{
 ev.preventDefault()
+if(userState.role=="user" || userState.role=="admin" ){
+  const UpdateUser= await clienteAxios.put(`/users/${userState._id}`,userState,jsonConfig)
 
-const UpdateUser= await clienteAxios.put(`/users/${userState._id}`,userState,jsonConfig)
-
-if (UpdateUser.status === 200){
-  handleCloseUpdate()
-  if(update==false){
-    setUpdate(true)
-  }else{
-    setUpdate(false)
+  if (UpdateUser.status === 200){
+    handleCloseUpdate()
+    if(update==false){
+      setUpdate(true)
+    }else{
+      setUpdate(false)
+    }
+    Swal.fire({
+      title: "Usuario actualizado con exito!",
+      icon: "success"
+    });
   }
+}else{
   Swal.fire({
-    title: "Usuario actualizado con exito!",
-    icon: "success"
-  });
+    icon: "error",
+    title: "Oops...",
+    text: "solo puede ser admin o user",
+    
+  }
+    )
 }
+
 }
 
 const deleteUser = async (iduser)=>{
@@ -127,36 +154,36 @@ const GetAllUsers= async ()=>{
     
     <h2>Usuarios</h2>
     <Button variant="primary" onClick={handleShow}>
-        Crear Producto
+        Crear Usuario
               </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Producto</Modal.Title>
+          <Modal.Title>Usuario</Modal.Title>
         </Modal.Header>
         <Modal.Body> <Form>
         <Form.Group className="mb-3" controlId="formBasicTitle">
-  <Form.Label>Nombre del Producto</Form.Label>
-  <Form.Control type="text" placeholder="Ingrese el nombre del producto"  name='nombreUsuario' onChange={handleChange} />
+  <Form.Label>Nombre del Usuario</Form.Label>
+  <Form.Control type="text" placeholder="Ingrese el nombre del usuario"  maxLength={80} minLength={2}   name='nombreUsuario' onChange={handleChange} />
 </Form.Group>
 
 <Form.Group className="mb-3" controlId="formBasicPrice">
-  <Form.Label>Precio</Form.Label>
-  <Form.Control type="text" placeholder="Ingrese el precio"  name='emailUsuario' onChange={handleChange} />
+  <Form.Label>Email</Form.Label>
+  <Form.Control type="email" placeholder="Ingrese el email" maxLength={80} minLength={2}  name='emailUsuario' onChange={handleChange} />
 </Form.Group>
 <Form.Group className="mb-3" controlId="formBasicPrice">
-  <Form.Label>Descripcion</Form.Label>
-  <Form.Control type="text" placeholder="Ingrese el precio"  name='contrasenia' onChange={handleChange} />
+  <Form.Label>Contraseña</Form.Label>
+  <Form.Control type="password" placeholder="Ingrese la contraseña" maxLength={30} minLength={5}   name='contrasenia' onChange={handleChange} />
 </Form.Group>
 <Form.Group className="mb-3" controlId="formBasicPrice">
   <Form.Label>Role</Form.Label>
-  <Form.Control type="text" placeholder="Ingrese el precio"  name='role' onChange={handleChange} />
+  <Form.Control type="text" placeholder="Ingrese user o admin" maxLength={5}  minLength={4} name='role' onChange={handleChange} />
 </Form.Group>
     </Form>
     </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={addUser}>
-            Guardar datos
+            Guardar Usuario
           </Button>
         </Modal.Footer>
       </Modal>
@@ -187,39 +214,42 @@ const GetAllUsers= async ()=>{
                 
 <Modal show={showUpdate} onHide={handleCloseUpdate}>
   <Modal.Header closeButton>
-    <Modal.Title>Editar Producto</Modal.Title>
+    <Modal.Title>Editar usuario</Modal.Title>
   </Modal.Header>
   <Modal.Body>
     <Form>
       <Form.Group className="mb-3" controlId="formBasicTitle">
-        <Form.Label>Nombre del Producto</Form.Label>
+        <Form.Label>Nombre del Usuario</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Ingrese el nombre del producto"
+          placeholder="Ingrese el nombre del usuario"
           value={userState.nombreUsuario}
           name="nombreUsuario"
           onChange={handleChange}
+          maxLength={80} minLength={2} 
         />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPrice">
-        <Form.Label>Precio</Form.Label>
+        <Form.Label>Email</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Ingrese el precio"
+          placeholder="Ingrese el email"
           value={userState.emailUsuario}
           name="emailUsuario"
           onChange={handleChange}
+          maxLength={80} minLength={2} 
         />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicDescription">
-        <Form.Label>Descripción</Form.Label>
+        <Form.Label>Role</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Ingrese la descripción"
+          placeholder="Ingrese user o admin"
           value={userState.role}
           name="role"
+          maxLength={5} minLength={4} 
           onChange={handleChange}
         />
       </Form.Group>

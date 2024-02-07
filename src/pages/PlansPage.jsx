@@ -1,24 +1,24 @@
-import React from 'react'
+import React, { useDebugValue } from 'react'
 import '../css/PlansPage.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Imgs from '../components/Imgs';
-import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom';
 import clienteAxios, { jsonConfig } from '../helpers/axiosconfig';
 import { useEffect, useState } from 'react'; 
 import Button from 'react-bootstrap/Button';
+import Swal from 'sweetalert2';
 
 const PlansPage = () => { 
   const [listaclase, setListaclase] = useState({})
   const [teacher, setTeacher] = useState({}) 
   const [fechaActual, setFechaActual] = useState(null);
-  const [fechaFinal, setFechaFinal] = useState(null);
   const [fechafinalback,setFechafinalback] = useState(null);
+  const [update,setUpdate]= useState(false)
   const use = useParams()
 
-
+  const userid = JSON.parse(sessionStorage.getItem('idUsuario'))
 
   const GetOneClass = async ()=>{
     
@@ -26,10 +26,9 @@ const PlansPage = () => {
   setListaclase(classone.data.GetClass)
   const teacherOne= await clienteAxios.get(`/teachers/${classone.data.GetClass.IDProfesor}`)
   setTeacher(teacherOne.data.GetTeacher)
-  const fechacierre = await clienteAxios.get(`/users/65c290c9c2877d81ec4b15e4`)
-  console.log(fechacierre.data.OneUser.fechafinal)
+  const fechacierre = await clienteAxios.get(`/users/${userid}`)
   setFechafinalback(fechacierre.data.OneUser.fechafinal)
-  }
+}
 
   const ReservarClase = async (ev) => {
     try {
@@ -39,25 +38,31 @@ const PlansPage = () => {
       const fechaFinal = new Date(fecha);
       fechaFinal.setDate(fechaFinal.getDate() + 30);
       const Reserva = await clienteAxios.put(
-        `/Class/Add/65c00d09f01768099fcc74ef`,
+        `/Class/Add/${use.id}`,
         {
-          Usuarios: "65c290c9c2877d81ec4b15e4",
+          Usuarios: userid,
           fechainicio: fecha,
           fechafinal:fechaFinal
         },
         jsonConfig
       );
+      Swal.fire({
+        title: "Clase Reservada",
+        icon: "success"
+      });
+      setUpdate(true)
     } catch (error) {
       console.log(error);
     }
   }
 const sacarusuario= async (ev)=>{
-  event.preventDefault()
-await clienteAxios.put('/Class/delete/65c00d09f01768099fcc74ef',  {
-  Usuarios: "65c290c9c2877d81ec4b15e4",
+  ev.preventDefault()
+await clienteAxios.put(`/Class/delete/${use.id}`,  {
+  Usuarios: userid,
   fechainicio: undefined
 },
 jsonConfig)
+setUpdate(false)
 }
   useEffect(() => {
     const interval = setInterval(() => {
@@ -74,7 +79,7 @@ jsonConfig)
 
   useEffect(() => {
     GetOneClass()
-  },[])
+  },[update])
   return (
     <main>
       <Container>
@@ -102,14 +107,21 @@ jsonConfig)
         <hr className='text-light' />
         <hr className='text-light' />
       </Row></div>
-        <div className='Div-Reserva-Turno'>
-          <h2> Reserva Tu Plan:    <Button variant="secondary" onClick={ReservarClase}>
-      Cerrar
-    </Button></h2>
-    <Button variant="secondary" onClick={sacarusuario}>
-      hola
-    </Button>
-        </div>
+      <div className='Div-Reserva-Turno'>
+  {  
+    fechafinalback ? (
+      <h2>
+        Clase Agregada , puede pasarse por la sucursal al horario mencionado 
+      </h2>
+    ) : (
+      <h2>Reserva Tu Plan:  
+        <Button variant="secondary" onClick={ReservarClase}>
+          Reservar Clase
+        </Button>
+      </h2>
+    )
+  }
+</div>
         <Row>
           <Col>
             <div>
@@ -123,12 +135,7 @@ jsonConfig)
               <Imgs url={teacher.imagen} alt={'Profesor'} id={'Profe-Plan-Musculacion'} />
               </div>
 
-              {fechaActual && (
-        <div>
-          <p>Fecha: {fechaActual.toLocaleDateString()}</p>
-          <p>Hora: {fechaActual.getHours()}:{fechaActual.getMinutes()}</p>
-        </div>
-      )}
+            
               </Col>
             </Col>
           </Col>

@@ -30,7 +30,7 @@ const Navbarx = () => {
         <Navbar.Collapse >
           { role === 'admin' ?
 <Nav className="cambio">
-<Nav.Link href="#home" className='mt-2'>Inicio</Nav.Link>
+<Nav.Link href="/AdminPage" className='mt-2'>Inicio</Nav.Link>
   <Nav.Link href="/AdminProduct"  className='mt-2'>Productos</Nav.Link>
   <Nav.Link  href="/AdminUser"  className='mt-2'>Usuarios</Nav.Link>
   <Nav.Link href="/AdminProductClass"   className='mt-2'>Clases</Nav.Link>

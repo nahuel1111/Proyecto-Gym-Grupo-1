@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/HeroPage.css'
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom'
 const HeroPage = () => {
   return (
     <div class="wrap">
@@ -10,6 +11,10 @@ const HeroPage = () => {
        ¡Bienvenido a un nuevo nivel de fitness y bienestar!"</p>
     <Button className='boton-1' variant="success mb-2">Iniciar sesion</Button>
     <Button className='boton-1' variant="success mb-2">Registrarse</Button>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit hic tenetur rem quasi nulla quibusdam? Ducimus commodi temporibus quae placeat.</p>
+    <Link to="/LoginPage"> <Button variant="success mb-2">Iniciar sesion</Button> </Link>
+   
+    <Link to="/RegisterPage"> <Button variant="success mb-2">Registrarse</Button></Link>
   </div>
 </div>
 

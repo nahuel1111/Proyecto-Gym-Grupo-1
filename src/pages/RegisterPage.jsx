@@ -20,7 +20,6 @@ const RegisterPage = () => {
 
   const handleClick = async (ev) => {
     try {
-      console.log ('estoy entrando a la funcion')
       ev.preventDefault()
       const { user, email, pass, rpass } = formValues
 
@@ -32,7 +31,6 @@ const RegisterPage = () => {
         });
       } else {
         if (pass === rpass) {
-          console.log ('estoy entrando a funcion')
           const sendFormRegister = await clienteAxios.post('/users', {
             nombreUsuario: user,
             emailUsuario: email,
@@ -49,30 +47,30 @@ const RegisterPage = () => {
         <div className="d-flex align-items-center justify-content-center wrap">
           <Form className="login-form">
             <Form.Group className="mb-3 text-white" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" name='email' value={formValues.email} onChange={handleChange} placeholder="Enter email" />
-              <Form.Text className="text-muted text-white">
+              <Form.Label>Ingresar email</Form.Label>
+              <Form.Control type="email" name='email' minLength={10} maxLength={80} value={formValues.email} onChange={handleChange} placeholder="Ingresar Email" />
+              <Form.Text className=" text-white">
               Nunca compartiremos su correo electrónico con nadie más.
               </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3 text-white" controlId="formBasicName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="text" name='user' value={formValues.user} onChange={handleChange} placeholder="Name" />
+              <Form.Label>nombre</Form.Label>
+              <Form.Control type="text" name='user' minLength={2} maxLength={40} value={formValues.user} onChange={handleChange} placeholder="Ingresar nombre" />
             </Form.Group>
 
             <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" name='pass' value={formValues.pass} onChange={handleChange} placeholder="Password" />
+              <Form.Label>contraseña</Form.Label>
+              <Form.Control type="password" name='pass' minLength={2} maxLength={40} value={formValues.pass} onChange={handleChange} placeholder="Contraseña" />
             </Form.Group>
 
             <Form.Group className="mb-3 text-white" controlId="formBasicConfirmPassword">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" name='rpass' value={formValues.rpass} onChange={handleChange} placeholder="Confirm Password" />
+              <Form.Label>Confirmar contraseña</Form.Label>
+              <Form.Control type="password" name='rpass' minLength={2} maxLength={40} value={formValues.rpass} onChange={handleChange} placeholder="Confirmar Contraseña" />
             </Form.Group>
 
             <Button variant="success" type="submit" onClick={handleClick}>
-              Enviar
+              Registrarse
             </Button>
           </Form>
         </div>

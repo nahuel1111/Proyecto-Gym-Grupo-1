@@ -18,9 +18,9 @@ const Footerx = () => {
           <Col>
             <h5 className='titulo-footer text-light'>"Redes"</h5>
             <ul className='cambios mt-3 text-light'>
-              <li><a href="">Instagram</a></li>
-              <li><a href="">Facebook</a></li>
-              <li><a href="">Tik Tok</a></li>
+              <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+              <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+              <li><a href="https://www.tiktok.com" target="_blank">Tik Tok</a></li>
             </ul>
           </Col>
 
@@ -36,9 +36,9 @@ const Footerx = () => {
           <Col>
             <h5 className='titulo-footer text-light'>"Ayuda"</h5>
             <ul className='cambios mt-3 text-light'>
-              <li><a href="">Contactanos</a></li>
-              <li><a href="">Politicas de privacidad</a></li>
-              <li><a href="">Centro de Soporte</a></li>
+              <li><a href="/Error404">Contactanos</a></li>
+              <li><a href="/Error404">Politicas de privacidad</a></li>
+              <li><a href="/Error404">Centro de Soporte</a></li>
             </ul>
           </Col>
           <div>

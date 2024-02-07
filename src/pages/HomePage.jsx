@@ -22,7 +22,9 @@ const HomePage = () => {
     const AllClass = await clienteAxios.get("/Class")
     setClasslist(AllClass.data.GetAllClass)
   }
-
+  const handleChange = (event) => {
+    setComentario(event.target.value);
+  };
   const EnviarComentario = async () =>{
     const comentario = await clienteAxios.post(`/Comment/${userid}`)
     Swal.fire({

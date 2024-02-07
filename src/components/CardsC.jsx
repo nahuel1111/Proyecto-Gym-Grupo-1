@@ -15,7 +15,7 @@ const CardsC = ({url,titulo,precio, clase,primera,segunda,tercera,cuarta,quinta,
       <Card.Body >
         <Card.Title > <h2 >{titulo}</h2></Card.Title>
         <Card.Text>
-            <h3 >{precio}</h3>
+            <h3 >${precio}</h3>
             <ul >
                 <li >
                     {primera}

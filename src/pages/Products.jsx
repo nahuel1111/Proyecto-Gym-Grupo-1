@@ -6,10 +6,23 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Imgs from '../components/Imgs';
-import CardsC from '../components/CardsC';
+import { useEffect, useState } from 'react'; 
+import { Link, useNavigate } from 'react-router-dom';
+
+ import clienteAxios, { config } from '../helpers/axiosconfig'; 
 
 
 const Products = () => {
+    const [products, setProducts] = useState([]) 
+
+
+    const GetProducts = async ()=>{
+        const getproduct = await clienteAxios.get("/products")
+        setProducts(getproduct.data.getAllProducts)
+    }
+    useEffect(() => {
+        GetProducts()
+      },[])
     return (
         <>
             <main className='fondo pt-4'>
@@ -18,19 +31,26 @@ const Products = () => {
                         <h3>°Nuestra seleccion de productos:</h3>
                     </div>
                     <Row>
-                        <Col>
-                            <Card className='Card-Padre'>
-                            <Imgs url={'https://i.postimg.cc/Xqjcrr98/imagen-2024-02-06-222405338.png'} alt={'Proteina Zeus'} width={'100%'} />
-                                <Card.Body>
-                                    <Card.Title>PACK ZEUS - 2 WHEY PROTEIN ZEUS DE 2 KG</Card.Title>
-                                    <Card.Text className='descripcion-card'>
-                                    Alimento alto en proteínas en base a suero de leche, ultrafiltradas, aisladas e hidrolizadas, de alto valor biológico. 
-                                    De completa composición de aminoácidos y una óptima absorción.
-                                    </Card.Text>
-                                    <Button className='boton-card' variant="primary">Ver Producto</Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                        
+
+                        {
+                              products.map((product) =>
+                              <Col md={4}>
+                              <Card className='Card-Padre'>
+                              <Imgs url={product.imagen} alt={'producto'} width={'100%'} />
+                                  <Card.Body>
+                                      <Card.Title>{product.titulo}</Card.Title>
+                                      <Card.Text className='descripcion-card'>
+                                     {product.descripcion}
+                                      </Card.Text>
+                                      <Link to={`/Product/${product._id}`}> <Button className='boton-card' variant="primary">Ver Producto</Button></Link>
+                                  </Card.Body>
+                              </Card>
+                              </Col>
+                              )
+                        }
+                           
+                      
                     </Row>
 
                 </Container>

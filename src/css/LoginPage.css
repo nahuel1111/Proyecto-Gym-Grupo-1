@@ -12,20 +12,13 @@
     padding: 20px;
     background: transparent;
     backdrop-filter: blur(2px); 
-
   }
-
-  
   /* LoginPage.css */
-
 .login-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
-
-
 
 .login-form {
   padding: 20px;

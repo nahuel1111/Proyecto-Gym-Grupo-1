@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
 .wrap {
     width: 100vw;
     height: 85vh;
@@ -7,12 +9,26 @@
     background: linear-gradient(to bottom, rgb(0 0 0 / .5), rgb(0 0 0 / .5)), url(https://i.postimg.cc/15G8vPqd/gym.jpg);
     background-size: cover;
     background-position: center;
+    font-family: 'Red Hat Display', sans-serif;
   }
   
   .wrap-texto {
+    font-family: 'Song Myung', serif;
     color: #fff;
     text-align: center;
     width: 50%; 
     align-self:center
   }
-  
+
+  .boton-1{
+    background-color: #1C1F1D;
+    border: 2px solid #ABCF2F;
+    border-radius: 10px;
+    color: white;
+    margin-left: 40px;
+  }
+
+  .boton-1:hover {
+    background-color: inherit !important; 
+    border-color: inherit !important; 
+  }

@@ -6,12 +6,16 @@ import Col from 'react-bootstrap/Col';
 import Imgs from '../components/Imgs';
 import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom';
-import clienteAxios from '../helpers/axiosconfig';
+import clienteAxios, { jsonConfig } from '../helpers/axiosconfig';
 import { useEffect, useState } from 'react'; 
-import { list } from 'postcss';
+import Button from 'react-bootstrap/Button';
 
 const PlansPage = () => { 
-  const [listaclase, setListaclase] = useState({}) 
+  const [listaclase, setListaclase] = useState({})
+  const [teacher, setTeacher] = useState({}) 
+  const [fechaActual, setFechaActual] = useState(null);
+  const [fechaFinal, setFechaFinal] = useState(null);
+  const [fechafinalback,setFechafinalback] = useState(null);
   const use = useParams()
 
 
@@ -20,16 +24,57 @@ const PlansPage = () => {
     
   const classone = await clienteAxios.get(`/Class/${use.id}`) 
   setListaclase(classone.data.GetClass)
+  const teacherOne= await clienteAxios.get(`/teachers/${classone.data.GetClass.IDProfesor}`)
+  setTeacher(teacherOne.data.GetTeacher)
+  const fechacierre = await clienteAxios.get(`/users/65c290c9c2877d81ec4b15e4`)
+  console.log(fechacierre.data.OneUser.fechafinal)
+  setFechafinalback(fechacierre.data.OneUser.fechafinal)
   }
 
-
-
-
+  const ReservarClase = async (ev) => {
+    try {
+      ev.preventDefault();
+      const fecha = new Date();
+      setFechaActual(fecha);
+      const fechaFinal = new Date(fecha);
+      fechaFinal.setDate(fechaFinal.getDate() + 30);
+      const Reserva = await clienteAxios.put(
+        `/Class/Add/65c00d09f01768099fcc74ef`,
+        {
+          Usuarios: "65c290c9c2877d81ec4b15e4",
+          fechainicio: fecha,
+          fechafinal:fechaFinal
+        },
+        jsonConfig
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+const sacarusuario= async (ev)=>{
+  event.preventDefault()
+await clienteAxios.put('/Class/delete/65c00d09f01768099fcc74ef',  {
+  Usuarios: "65c290c9c2877d81ec4b15e4",
+  fechainicio: undefined
+},
+jsonConfig)
+}
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      if(fechafinalback){
+        if (now >= fechafinalback) {   
+          sacarusuario();
+        }
+      }
+    }, 60000)
+  
+  }, []);
+  
 
   useEffect(() => {
     GetOneClass()
   },[])
-  console.log(use)
   return (
     <main>
       <Container>
@@ -58,27 +103,32 @@ const PlansPage = () => {
         <hr className='text-light' />
       </Row></div>
         <div className='Div-Reserva-Turno'>
-          <h2>° Reserva Tu Turno:</h2>
+          <h2> Reserva Tu Plan:    <Button variant="secondary" onClick={ReservarClase}>
+      Cerrar
+    </Button></h2>
+    <Button variant="secondary" onClick={sacarusuario}>
+      hola
+    </Button>
         </div>
         <Row>
           <Col>
             <div>
-              <h5 className='text-light mt-4'>Horario De La Clase:</h5>
+              <h5 className='text-light mt-4'>Horario De La Clase: {listaclase.Horario}</h5>
             </div>
-            <div>
-              <Form.Select className='Form-Hora mt-3' aria-label="Default select example">
-                <option>Seleccione el Horario en el que Desea Tener la Clase:</option>
-                <option value="1"> 8:00</option>
-                <option value="2">10:00</option>
-                <option value="3">12:00</option>
-              </Form.Select>
-            </div>
+       
             <Col className='Nombre-Profesor mt-4'>
-              <h2>Profesor: Diego Fernandez </h2>
+              <h2> nombre del profesor es  {teacher.NombyAp}</h2>
               <Col>
               <div>
-              <Imgs url={'https://i.postimg.cc/0NHgkH24/imagen-2024-01-26-184853180.png'} alt={'Profesor de Plan de Musculacion'} id={'Profe-Plan-Musculacion'} />
+              <Imgs url={teacher.imagen} alt={'Profesor'} id={'Profe-Plan-Musculacion'} />
               </div>
+
+              {fechaActual && (
+        <div>
+          <p>Fecha: {fechaActual.toLocaleDateString()}</p>
+          <p>Hora: {fechaActual.getHours()}:{fechaActual.getMinutes()}</p>
+        </div>
+      )}
               </Col>
             </Col>
           </Col>

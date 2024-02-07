@@ -24,14 +24,14 @@ const AboutUs = () => {
           <img src="https://i.postimg.cc/dt0NjsZN/holaperdida.jpg" width="100px" alt="" className="box-img" />
           <h2>Nahuel Pumara</h2>
           <h3>Programador</h3>
-          <p>Soy Nahuel Pumara y soy re 5</p>
+          <p>Hola soy nahuel, tengo 22 años, estoy recibido de la "Tecnicatura en Programacion" de la UTN, quiero estudiar Ing. en Sistemas</p>
         </section>
 
         <section className="box mb-5">
           <img src="https://i.postimg.cc/qMXnqyv9/xexitaaar.png" width="100px" alt="" className="box-img" />
           <h2>Cesar Hermida</h2>
           <h3>Programador Scrum Master</h3>
-          <p>Hola, soy xexitaar y hago asados.</p>
+          <p>Hola, soy cesar, tengo 21 años, soy estudiante de la carrera de Ing. en Sistemas de la UTN. </p>
         </section>
 
       

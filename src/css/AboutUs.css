@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
 
 .main{
     background-color: #101616;
@@ -43,7 +44,7 @@
     letter-spacing: 3px;
     font-weight: 100;
     margin-bottom: 20px;
-
+    text-decoration: underline;
 }
 
 .box p{

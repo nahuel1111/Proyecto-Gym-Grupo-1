@@ -27,7 +27,7 @@ const HomePage = () => {
       <main className='body pt-5'>
         <Container>
           <Row>
-            <Col sm={10} md={2} lg={6}>
+            <Col>
               <div className='texto-cambio'>
                 <h2>HAZ QUE TU</h2>
                 <h1>CUERPO TENGA FORMA</h1>
@@ -38,12 +38,12 @@ const HomePage = () => {
 
             </Col>
 
-            <Col sm={2} md={10} lg={6}> <Imgs url={'https://i.postimg.cc/FHTQ9DrQ/home-img.png'} alt={'Mario bros'} width={'85%'} />  </Col>
+            <Col> <Imgs className='imagen-1' url={'https://i.postimg.cc/FHTQ9DrQ/home-img.png'} alt={'Mario bros'} width={'85%'} />  </Col>
           </Row>
           <Row>
 
-            <Col sm={2} md={10} lg={6} className='mt-5'> <Imgs url={'https://i.postimg.cc/GhQs9VmH/header.png'} alt={'Mario bros'} width={'60%'} />  </Col>
-            <Col sm={10} md={2} lg={6} className='mt-5'>
+            <Col className='mt-5'> <Imgs className='imagen-2' url={'https://i.postimg.cc/GhQs9VmH/header.png'} alt={'Mario bros'} width={'60%'} />  </Col>
+            <Col className='mt-5'>
               <div className='texto-primera'>
                 <h2 className='texto-primera-1'>"DESAFÍA TU CUERPO:</h2>
                 <h2 className='texto-primera-2'>CLASE DE MUSCULACIÓN"</h2>
@@ -55,7 +55,7 @@ const HomePage = () => {
           </Row>
 
           <Row>
-            <Col sm={2} md={10} lg={7} className='mt-5'>
+            <Col className='mt-5'>
               <div className='texto-primera'>
                 <h2 className='texto-primera-1'>"DESAFÍA TU CUERPO:</h2>
                 <h2 className='texto-primera-2'>CLASE DE CROSSFIT"</h2>
@@ -64,8 +64,8 @@ const HomePage = () => {
                   tus objetivos fitness. ¡Desafía tu cuerpo y supera tus límites con nosotros!"</p>
               </div>
             </Col>
-            <Col sm={10} md={2} lg={5} className='mt-5'>
-              <Imgs url={'https://i.postimg.cc/5yLXSkJQ/about.png'} alt={'Mario bros'} width={'80%'} />
+            <Col className='mt-5'>
+              <Imgs className='imagen-3' url={'https://i.postimg.cc/5yLXSkJQ/about.png'} alt={'Mario bros'} width={'80%'} />
             </Col>
           </Row>
           <div className='caja-lineas'>
@@ -156,11 +156,7 @@ const HomePage = () => {
                 </Form>
               </div>
             </div>
-
-
           </div>
-
-
         </Container>
       </main>
     </>

@@ -147,8 +147,9 @@ useEffect(() => {
 },[update])
   return (
     <>
+    <main>
     <Container>
-    <h2>Productos</h2> 
+    <h2 className='text-light'>Productos</h2> 
 
       <Button variant="primary" onClick={handleShow}>
         Crear Producto
@@ -186,7 +187,7 @@ useEffect(() => {
         </Modal.Footer>
       </Modal>
     <div className='d-flex justify-content-center mt-3'>
-        <Table striped bordered hover className='w-75'>
+        <Table responsive striped bordered hover className='w-75'>
           <thead>
             <tr>
               
@@ -209,6 +210,7 @@ useEffect(() => {
               <td><Imgs url={product.imagen} alt={'producto'} width={'50%'}  /></td>
               <td>
               <Button variant="primary" onClick={() => handleShowUpdate(product)}> Editar</Button>
+              <button className='btn btn-danger' onClick={() => deleteProduct(product._id)}>Eliminar</button>
 <Modal show={showUpdate} onHide={handleCloseUpdate}>
   <Modal.Header closeButton>
     <Modal.Title>Editar Producto</Modal.Title>
@@ -274,9 +276,6 @@ useEffect(() => {
   </Modal.Footer>
 </Modal>
 </td>
-              <td>
-              <button className='btn btn-danger' onClick={() => deleteProduct(product._id)}>Eliminar</button>
-              </td>
             
                     </tr>
             )
@@ -285,7 +284,7 @@ useEffect(() => {
         </Table>
       </div>
     </Container>
-   
+    </main>
     </>
   )
 }

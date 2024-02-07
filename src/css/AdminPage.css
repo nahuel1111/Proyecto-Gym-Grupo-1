@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.eliminar-profesores button.btn{
+    margin-right: 10px;
+}
+
+.eliminar-profesores button {
+    margin-bottom: 10px; 
+  }
+  
+  .eliminar-profesores button:first-child {
+    margin-bottom: 0; 
+  }

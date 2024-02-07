@@ -132,8 +132,7 @@ const HomePage = () => {
                       boton={
                         <Link to={`/PlansPage/${clase._id}`}>Ver Clase:</Link>
                       }
-                    />
-
+                      />
                   )}
                 </Col>
               ))}

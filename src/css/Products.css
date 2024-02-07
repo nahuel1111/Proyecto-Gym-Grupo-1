@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fondo{
+    background-color: #101616;
+}
+
+.titulo-productos{
+    color: white;
+    font-family: 'Red Hat Display', sans-serif;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: #ABCF2F;
+}
+
+.Card-Padre{
+    width: 18rem;
+    background-color: #1C1F1D;
+    border: 2px solid #ABCF2F;
+    color: white;
+    font-family: 'Song Myung', serif;
+    margin-bottom: 40px;
+}
+
+.descripcion-card{
+    white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
+.boton-card{
+    background-color: #ABCF2F;
+    border: 2px solid #101616;
+}

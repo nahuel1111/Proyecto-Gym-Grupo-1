@@ -8,50 +8,55 @@ import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom';
 import clienteAxios from '../helpers/axiosconfig';
 import { useEffect, useState } from 'react'; 
+import { list } from 'postcss';
 
 const PlansPage = () => { 
-  const [classlist, setClassList] = useState([]) 
+  const [listaclase, setListaclase] = useState({}) 
   const use = useParams()
-const GetAllClass = async () => {
-  const AllClass = await clienteAxios.get (`/Class/${use.id}`) 
-setClassList(AllClass.data.GetClass)
-}
- useEffect(() => {
-  GetAllClass()
-},[])
+
+
+
+  const GetOneClass = async ()=>{
+    
+  const classone = await clienteAxios.get(`/Class/${use.id}`) 
+  setListaclase(classone.data.GetClass)
+  }
+
+
+
+
+
+  useEffect(() => {
+    GetOneClass()
+  },[])
+  console.log(use)
   return (
     <main>
       <Container>
-        <hr className='text-light mt-2' />
-        {classlist.map((Clase)=> 
-   <div>   <div class="Div-Musculacion">
+        <hr className='text-light mt-2' />   
+        <div>   <div class="Div-Musculacion">
         
-   <h3 class="">{Clase.Titulo}</h3>
-   <p class="opacity-50">"Desafía tus límites con nuestro plan de entrenamiento pesado y alcanza un nivel superior de fuerza y resistencia."</p>
- </div>
- <hr className='text-light' />
- <Row>
-   <div className='Imagen-Principal-Musculatura'>
-     <Imgs url={Clase.imagen} alt={'Foto de Mancuernas'} id={'Plan-Musculacion-1'} />
-   </div>
-   <Col>
-     <div>
-       <li className='Descripcion-Plan'>{Clase.Descripcion}</li>
-     </div>
-   </Col>
-   <Col>
-     <div className='Imagen-Secundaria-Musculatura'>
-       <Imgs url={'https://i.postimg.cc/RZ6gNW8C/joven-ropa-deportiva-clase-ejercicios-gimnasio.jpg'} alt={'Imagen-Profesor'} width={'80%'} id={'Plan Musculacion 2'} />
-     </div>
-   </Col>
-   <hr className='text-light' />
-   <hr className='text-light' />
- </Row></div>
-    
-       )}
-    
-        
-   
+        <h3 class="">{listaclase.Titulo}</h3>
+        <p class="opacity-50">"Desafía tus límites con nuestro plan de entrenamiento pesado y alcanza un nivel superior de fuerza y resistencia."</p>
+      </div>
+      <hr className='text-light' />
+      <Row>
+        <div className='Imagen-Principal-Musculatura'>
+          <Imgs url={listaclase.imagen} alt={'Foto de Mancuernas'} width={"90%"} id={'Plan-Musculacion-1'} />
+        </div>
+        <Col>
+          <div>
+            <li className='Descripcion-Plan'>{listaclase.Descripcion}</li>
+          </div>
+        </Col>
+        <Col>
+          <div className='Imagen-Secundaria-Musculatura'>
+            <Imgs url={'https://i.postimg.cc/RZ6gNW8C/joven-ropa-deportiva-clase-ejercicios-gimnasio.jpg'} alt={'Imagen-Profesor'} width={'80%'} id={'Plan Musculacion 2'} />
+          </div>
+        </Col>
+        <hr className='text-light' />
+        <hr className='text-light' />
+      </Row></div>
         <div className='Div-Reserva-Turno'>
           <h2>° Reserva Tu Turno:</h2>
         </div>
@@ -78,24 +83,11 @@ setClassList(AllClass.data.GetClass)
             </Col>
           </Col>
         </Row>
-        {/* <div className='weather-container'>
-          <imput
-            type= 'text'
-            placeholder= 'Enter city name'
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <button onClick={getWeather}>Get Weather</button>
-          {weatherInfo && (
-            <div className='weather-info'>
-              <h3></h3>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-            </div>
-          )}
-        </div> */}
+  
+       
+ 
+    
+   
       </Container>
     </main>
   )

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+
+.borde-footer{
+    background-color: #0a0e0e;
+}
+
 .centrado{
     justify-content: center;
     align-items: center;
@@ -38,7 +44,7 @@ flex-grow: 1;
     background-color: rgb(141, 97, 15);
 }
 .titulo-footer{
-    
+    font-family: 'Song Myung', serif;
     color: rgb(0, 0, 0);
     width: 20%;
     border-bottom: 1px solid gold;
@@ -51,8 +57,12 @@ flex-grow: 1;
 .cambios{
 list-style: none;
 padding: 0;
-
+font-family: 'Song Myung', serif;
 }
+
+.cambios a {
+    color: inherit;
+  }
 .cambios li{
     margin-top: 16px;
 }

@@ -1,27 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+h1, h2, h3 {
+    color: var(hsl(180, 4%, 72%));
+    font-weight: var(700);
+  }
 .texto-cambio h2{
-font-size: 80px;
+font-size: 60px;
 margin: 0;
 padding: 0;
+font-family: 'Red Hat Display', sans-serif;
+color: white;
+-webkit-text-stroke: 1px hsl(180, 4%, 72%);
+color: transparent;
 }
 
 .texto-cambio h1{
-    margin: 0;
-    padding: 0;
-font-size: 100px;
+margin: 0;
+padding: 0;
+font-size: 50px;
+font-family: 'Red Hat Display', sans-serif;
+color: white;
 }
 main{
-    background-color: #101616;
-    
+    background-color: #101616; 
 }
 .texto-cambio p{
 font-size: 17px;
 margin: 0;
 padding: 0;
+color: white;
 }
 
 .texto-cambio a{
@@ -33,31 +47,68 @@ display: inline-block;
 margin-top: 20px;
 text-align: center;
 }
+
 .texto-primera{
     margin-top: 40px;
+    color: white;
 }
+
+.texto-primera p{
+    font-size: 20px;
+    text-align: center;
+
+}
+
 .texto-primera h2{
-    font-size: 70px;
+    font-family:'Red Hat Display', sans-serif;
+    font-size: 50px;
+    text-align: center;
 }
+
+.texto-primera-1{
+    -webkit-text-stroke: 1px hsl(180, 4%, 72%);
+    color: transparent;
+}
+
+.texto-primera-2{
+    color: #ABCF2F;
+}
+
 .margin{
     margin-top: 10000px;
 }
+
+/* LINEAS */
+.linea-grande{
+    width: 100%;
+    border-bottom: 5px solid #ABCF2F;
+}
+/* LINEAS */
+
 .titulo{
-    margin-top: 130px;
+    margin-top: 20px;
+    font-family: 'Red Hat Display', sans-serif;
 }
 .titulo h2{
 text-align: center;
 font-size: 70px;
-
+color: white;
 }
+
 .parrafo-titulo p{
 text-align: center;
 font-size: 35px;
-padding: 40px;
+color: white;
+opacity: 50%;
 }
 .parrafo-clases h3{
-text-align: center;
+color: white;
+font-family: 'Red Hat Display', sans-serif;
+text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: #ABCF2F;
 }
+
 .color{
     color: green;
     font-size: 18px;
@@ -67,19 +118,39 @@ text-align: center;
     color: white;
     margin-left: 10px;
 }
+
 .border-bajo{
-    border-bottom: 1px solid red;
-    width: 20%;
+    border-bottom: 1px solid #ABCF2F;
+    width: 30%;
    display: inline-block;
    padding-bottom: 10px;
 }
+
 .caja-padre-form{
     display: flex;
     justify-content: center;
 }
+
+.texto-comentario{
+    color: white;
+    font-family: 'Protest Riot', sans-serif;
+}
+
 .form-cambio{
-    background-color: gray;
+    background-color: #1C1F1D;
+    border-radius: 10px;
+    border: 2px solid #ABCF2F;
     padding: 50px;
     width: 50%;
     margin-bottom: 70px;
+    box-sizing: border-box;
 }
+
+.boton-comentario{
+    background-color: #ABCF2F;
+    color: #101616;
+    border: 2px solid #0e0f0e;
+}
+
+/* @Media */
+

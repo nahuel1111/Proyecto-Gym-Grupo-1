@@ -27,7 +27,7 @@ const CardsC = ({url,titulo,precio, clase,primera,segunda,tercera,cuarta,quinta,
             </ul>
         </Card.Text>
         <div className='aver'>
-        <a href="">{boton}</a>
+        {boton}
         </div>
       
       </Card.Body>

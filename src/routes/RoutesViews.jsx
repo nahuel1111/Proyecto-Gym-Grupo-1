@@ -18,6 +18,7 @@ import PrivateRoute from '../components/PrivateRoute'
 import AboutUs from '../pages/AboutUs'
 import AdminTeacherPage from '../pages/AdminTeacherPage'
 import Products from '../pages/Products'
+import Error404 from '../pages/Error404'
 
 const RoutesViews = () => {
   return (
@@ -38,7 +39,7 @@ const RoutesViews = () => {
     <Route path='/AdminComment/:id' element={ <PrivateRoute role='admin' ><AdminComment/></PrivateRoute>}/>
     <Route path='/AdminTeacher' element={ <PrivateRoute role='admin'><AdminTeacherPage/></PrivateRoute>}/>
     <Route path='/AboutUs' element={<AboutUs/>}/>
-
+    <Route path='/Error404' element={<Error404/>}/>
     <Route path='/ContactPage' element={<ContactPage/>}/>
 
     </Routes>

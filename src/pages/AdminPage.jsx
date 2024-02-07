@@ -6,10 +6,11 @@ import '../css/AdminPage.css'
 const AdminPage = () => {
   return (
     <>
+    <main>
     <Container>
-    <h2>Administrador</h2>
+    <h2 className='text-light'>Administrador</h2>
     </Container>
-   
+    </main>
     </>
   )
 }

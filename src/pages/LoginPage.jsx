@@ -47,7 +47,7 @@ const LoginPage = () => {
           sessionStorage.setItem('token', JSON.stringify(sendFormLogin.data.token))
           sessionStorage.setItem('role', JSON.stringify(sendFormLogin.data.role))
           sessionStorage.setItem('idUsuario', JSON.stringify(sendFormLogin.data.idUsuario))
-          navigate('/')
+          navigate('/HomePage')
          }
       }
     }

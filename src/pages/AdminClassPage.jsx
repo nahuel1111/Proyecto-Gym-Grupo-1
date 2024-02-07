@@ -75,10 +75,11 @@ const GetAllClass = async ()=>{
   },[])
   return (
     <>
+    <main className='text-light'>
     <Container>
     <h2>Clases</h2>
     <div className='d-flex justify-content-center mt-3'>
-        <Table striped bordered hover className='w-75'>
+        <Table responsive striped bordered hover className='w-75'>
           <thead>
             <tr>
               <th>Titulo</th>
@@ -184,7 +185,7 @@ const GetAllClass = async ()=>{
         </Table>
       </div>
     </Container>
-   
+    </main>
     </>
   )
 }

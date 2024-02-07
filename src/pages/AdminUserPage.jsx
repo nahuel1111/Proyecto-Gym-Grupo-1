@@ -150,6 +150,7 @@ const GetAllUsers= async ()=>{
   },[update])
   return (
     <>
+    <main className='text-light'>
     <Container>
     
     <h2>Usuarios</h2>
@@ -188,7 +189,7 @@ const GetAllUsers= async ()=>{
         </Modal.Footer>
       </Modal>
     <div className='d-flex justify-content-center mt-3'>
-        <Table striped bordered hover className='w-75'>
+        <Table responsive striped bordered hover className='w-75'>
           <thead>
             <tr>
               <th>Nombre y Apellido</th>
@@ -208,7 +209,7 @@ const GetAllUsers= async ()=>{
                  <Button variant="primary" onClick={() => handleShowUpdate(user)}> Editar</Button>
                  <Button variant="primary" onClick={() => deleteUser(user._id)}> Eliminar</Button>
                  <Button variant="success">
-  <Link to={`/AdminComment/${user._id}`}>Comentarios</Link>
+                 <Link to={`/AdminComment/${user._id}`}>Comentarios</Link>
 </Button>
                  </td> 
                 
@@ -273,7 +274,7 @@ const GetAllUsers= async ()=>{
       </div>
 
     </Container>
-    
+    </main>
     </>
   )
 }

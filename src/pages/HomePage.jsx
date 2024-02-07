@@ -8,7 +8,7 @@ import CardsC from '../components/CardsC';
 import Form from 'react-bootstrap/Form';
 import 'remixicon/fonts/remixicon.css';
 import { useEffect, useState } from 'react';
-import clienteAxios from '../helpers/axiosconfig';
+import clienteAxios, { jsonConfig } from '../helpers/axiosconfig';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 
 const HomePage = () => {
   const [classlist, setClasslist] = useState([])
+  const [comentario, setComentario] = useState('');
 
   const userid = JSON.parse(sessionStorage.getItem('idUsuario'))
   const GetClass = async () => {
@@ -23,10 +24,11 @@ const HomePage = () => {
     setClasslist(AllClass.data.GetAllClass)
   }
   const handleChange = (event) => {
-    setComentario(event.target.value);
+    setComentario(event.target.value)
   };
-  const EnviarComentario = async () =>{
-    const comentario = await clienteAxios.post(`/Comment/${userid}`)
+  const EnviarComentario = async (ev) =>{
+    ev.preventDefault()
+    const comentarios = await clienteAxios.post(`/Comment/${userid}`,{comentario:comentario})
     Swal.fire({
       title: "Comentario Agregado",
       text: "El Comentario se agrego correctamente.",
@@ -161,7 +163,7 @@ const HomePage = () => {
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label className='texto-comentario'>INGRESA TU COMENTARIO.</Form.Label>
                     <InputGroup>
-                      <Form.Control as="textarea" aria-label="With textarea" placeholder='Su comentario nos ayuda a mejorar!' onChange={handleChange} />
+                      <Form.Control as="textarea" aria-label="With textarea" placeholder='Su comentario nos ayuda a mejorar!' onChange={handleChange} value={comentario} />
                     </InputGroup>
                   </Form.Group>
                   <Button className='boton-comentario' variant="primary" onClick={EnviarComentario}>

@@ -12,7 +12,6 @@ const LoginPage = () => {
     email:'',
     pass:''
   })
-  const [clasePresente, setClasePresente] = useState(false);
 
   const handleChange = (ev) => {
     setFormValues({...formValues, [ev.target.name]: ev.target.value})
@@ -27,11 +26,6 @@ const LoginPage = () => {
         title: "Oops...",
         text: "Algun campo esta vacio!",
       });
-      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email)) {
-       setClasePresente(true)
-       return
-      } 
-      setClasePresente(false)
     }else{
       const sendFormLogin = await clienteAxios.post('/users/login',{
         emailUsuario:formValues.email,
@@ -77,9 +71,7 @@ const LoginPage = () => {
             <Form.Text className=" text-white">
               Nunca compartiremos su correo electrónico con nadie más.
             </Form.Text>
-            {
-              clasePresente ? <p className='text-danger '>Correo Invalido</p> :""
-            }
+
             
           </Form.Group>
 

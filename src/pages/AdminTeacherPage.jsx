@@ -73,6 +73,71 @@ const addTeacher = async (ev) => {
     console.error("Error al agregar el producto:", error)
   }
 }
+
+
+const addClasstwo = async (ev,teacherId)=>{
+  try {
+    ev.preventDefault()
+   const exist= await clienteAxios.get(`/Class/65c318fbb7c1f15feb646c0e`)
+   if(exist.data.GetClass.IDProfesor==teacherId){
+     await clienteAxios.put(`/Class/deleteTeacher/65c318fbb7c1f15feb646c0e`, {IDProfesor:teacherId},jsonConfig)
+     Swal.fire({
+      title: "Eliminado!",
+      text: "El profesor se elimino correctamente de la clase.",
+      icon: "success"
+    })
+   }else if(exist.data.GetClass.IDProfesor){
+    Swal.fire({
+      title: "error!",
+      text: "ya hay un profesor en esta clase",
+      icon: "success"
+    })
+   }else{
+    const updateteacher= await clienteAxios.put(`/Class/AddTeacher/65c318fbb7c1f15feb646c0e`,{IDProfesor:teacherId},jsonConfig)
+    Swal.fire({
+      title: "profesor Agregado",
+      text: "El profesor se agrego correctamente a la clase.",
+      icon: "success"
+    })
+   }
+    
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const addClassthree = async (ev,teacherId)=>{
+  try {
+    ev.preventDefault()
+   const exist= await clienteAxios.get(`/Class/65c31979b7c1f15feb646c12`)
+   if(exist.data.GetClass.IDProfesor==teacherId){
+     await clienteAxios.put(`/Class/deleteTeacher/65c31979b7c1f15feb646c12`, {IDProfesor:teacherId},jsonConfig)
+     Swal.fire({
+      title: "Eliminado!",
+      text: "El profesor se elimino correctamente de la clase.",
+      icon: "success"
+    })
+   }else if(exist.data.GetClass.IDProfesor){
+    Swal.fire({
+      title: "error!",
+      text: "ya hay un profesor en esta clase",
+      icon: "success"
+    })
+   }else{
+    const updateteacher= await clienteAxios.put(`/Class/AddTeacher/65c31979b7c1f15feb646c12`,{IDProfesor:teacherId},jsonConfig)
+    Swal.fire({
+      title: "profesor Agregado",
+      text: "El profesor se agrego correctamente a la clase.",
+      icon: "success"
+    })
+   }
+    
+
+  } catch (error) {
+    console.log(error)
+  }
+}
 const deleteTeacher = async (idteacher)=>{
   try {
     Swal.fire({
@@ -139,11 +204,25 @@ const addClass = async (ev,teacherId)=>{
     ev.preventDefault()
    const exist= await clienteAxios.get(`/Class/65c00d09f01768099fcc74ef`)
    if(exist.data.GetClass.IDProfesor==teacherId){
-    return await clienteAxios.put(`/Class/deleteTeacher/65c00d09f01768099fcc74ef`, {IDProfesor:teacherId},jsonConfig)
+     await clienteAxios.put(`/Class/deleteTeacher/65c00d09f01768099fcc74ef`, {IDProfesor:teacherId},jsonConfig)
+     Swal.fire({
+      title: "Eliminado!",
+      text: "El profesor se elimino correctamente de la clase.",
+      icon: "success"
+    })
    }else if(exist.data.GetClass.IDProfesor){
-    alert("ya hay un profesor en esta clase")
+    Swal.fire({
+      title: "error!",
+      text: "ya hay un profesor en esta clase",
+      icon: "success"
+    })
    }else{
     const updateteacher= await clienteAxios.put(`/Class/AddTeacher/65c00d09f01768099fcc74ef`,{IDProfesor:teacherId},jsonConfig)
+    Swal.fire({
+      title: "profesor Agregado",
+      text: "El profesor se agrego correctamente a la clase.",
+      icon: "success"
+    })
    }
     
 
@@ -275,10 +354,10 @@ const addClass = async (ev,teacherId)=>{
               <button className='btn btn-danger' onClick={(event) => addClass(event, teachers._id)}>Clase 1</button>
               </td>
               <td>
-              <button className='btn btn-danger' onClick={() => addClasstwo(teachers._id)}>Clase 2</button>
+              <button className='btn btn-danger' onClick={(event) => addClasstwo(event,teachers._id)}>Clase 2</button>
               </td>
               <td>
-              <button className='btn btn-danger' onClick={() => addClassthree(teachers._id)}>Clase 3</button>
+              <button className='btn btn-danger' onClick={(event) => addClassthree(event,teachers._id)}>Clase 3</button>
               </td>
             
                     </tr>

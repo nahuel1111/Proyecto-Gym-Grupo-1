@@ -24,9 +24,9 @@ const RoutesViews = () => {
 
     <Navbarx />
     <Routes>
-    <Route path='/' element={ <PrivateRoute role='user'><HomePage/></PrivateRoute>} />
+    <Route path='/HomePage' element={ <PrivateRoute role='user'><HomePage/></PrivateRoute>} />
     <Route path='/Product' element={ <PrivateRoute role='user'><ProductPage/></PrivateRoute>}  />
-    <Route path='/HeroPage' element={<HeroPage/>}/>
+    <Route path='/' element={<HeroPage/>}/>
     <Route path='/PlansPage/:id' element={ <PrivateRoute role='user'><PlansPage/></PrivateRoute>}/>
     <Route path='/LoginPage' element={<LoginPage/>}/>
     <Route path='/RegisterPage' element={<RegisterPage/>}/>
@@ -34,8 +34,8 @@ const RoutesViews = () => {
     <Route path='/AdminPage' element={ <PrivateRoute role='admin'><AdminPage/></PrivateRoute> }/>
     <Route path='/AdminProduct' element={ <PrivateRoute role='admin'><AdminProductsPage/></PrivateRoute>}/>
     <Route path='/AdminProductClass' element={ <PrivateRoute role='admin'><AdminClassPage/></PrivateRoute>}/>
-    <Route path='/AdminUser' element={ <PrivateRoute ><AdminUserPage/></PrivateRoute>}/>
-    <Route path='/AdminComment/:id' element={ <PrivateRoute ><AdminComment/></PrivateRoute>}/>
+    <Route path='/AdminUser' element={ <PrivateRoute role='admin' ><AdminUserPage/></PrivateRoute>}/>
+    <Route path='/AdminComment/:id' element={ <PrivateRoute role='admin' ><AdminComment/></PrivateRoute>}/>
     <Route path='/AdminTeacher' element={ <PrivateRoute role='admin'><AdminTeacherPage/></PrivateRoute>}/>
 
     <Route path='/AboutUs' element={<AboutUs/>}/>

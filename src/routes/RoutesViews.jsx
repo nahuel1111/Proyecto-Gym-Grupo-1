@@ -29,7 +29,7 @@ const RoutesViews = () => {
     <Route path='/' element={<HeroPage/>}/>
     <Route path='/PlansPage/:id' element={ <PrivateRoute role='user'><PlansPage/></PrivateRoute>}/>
     <Route path='/LoginPage' element={<LoginPage/>}/>
-    <Route path='/RegisterPage' element={ <PrivateRoute role='user'>  <RegisterPage/> </PrivateRoute>}/>
+    <Route path='/RegisterPage' element={   <RegisterPage/> }/>
     <Route path='/Products' element={ <PrivateRoute role='user'><Products/> </PrivateRoute>}/>
     <Route path='/AdminPage' element={ <PrivateRoute role='admin'><AdminPage/></PrivateRoute> }/>
     <Route path='/AdminProduct' element={ <PrivateRoute role='admin'><AdminProductsPage/></PrivateRoute>}/>

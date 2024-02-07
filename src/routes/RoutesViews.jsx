@@ -16,6 +16,7 @@ import ContactPage from '../pages/ContactPage'
 
 import AboutUs from '../pages/AboutUs'
 import AdminTeacherPage from '../pages/AdminTeacherPage'
+import Products from '../pages/Products'
 
 const RoutesViews = () => {
   return (
@@ -29,7 +30,7 @@ const RoutesViews = () => {
     <Route path='/PlansPage/:id' element={<PlansPage/>}/>
     <Route path='/LoginPage' element={<LoginPage/>}/>
     <Route path='/RegisterPage' element={<RegisterPage/>}/>
-
+    <Route path='/Products' element={<Products/>}/>
     <Route path='/AdminPage' element={<AdminPage/>}/>
     <Route path='/AdminProduct' element={<AdminProductsPage/>}/>
     <Route path='/AdminProductClass' element={<AdminClassPage/>}/>

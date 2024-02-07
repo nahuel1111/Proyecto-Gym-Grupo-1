@@ -12,12 +12,24 @@ import clienteAxios from '../helpers/axiosconfig';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Swal from 'sweetalert2';
 
 const HomePage = () => {
   const [classlist, setClasslist] = useState([])
+
+  const userid = JSON.parse(sessionStorage.getItem('idUsuario'))
   const GetClass = async () => {
     const AllClass = await clienteAxios.get("/Class")
     setClasslist(AllClass.data.GetAllClass)
+  }
+
+  const EnviarComentario = async () =>{
+    const comentario = await clienteAxios.post(`/Comment/${userid}`)
+    Swal.fire({
+      title: "Comentario Agregado",
+      text: "El Comentario se agrego correctamente.",
+      icon: "success"
+    })
   }
   useEffect(() => {
     GetClass()
@@ -147,11 +159,11 @@ const HomePage = () => {
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label className='texto-comentario'>INGRESA TU COMENTARIO.</Form.Label>
                     <InputGroup>
-                      <Form.Control as="textarea" aria-label="With textarea" placeholder='Su comentario nos ayuda a mejorar!' />
+                      <Form.Control as="textarea" aria-label="With textarea" placeholder='Su comentario nos ayuda a mejorar!' onChange={handleChange} />
                     </InputGroup>
                   </Form.Group>
-                  <Button className='boton-comentario' variant="primary" type="submit">
-                    Submit
+                  <Button className='boton-comentario' variant="primary" onClick={EnviarComentario}>
+                    Enviar Comentario
                   </Button>
                 </Form>
               </div>

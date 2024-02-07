@@ -12,6 +12,7 @@ const LoginPage = () => {
     email:'',
     pass:''
   })
+  const [clasePresente, setClasePresente] = useState(false);
 
   const handleChange = (ev) => {
     setFormValues({...formValues, [ev.target.name]: ev.target.value})
@@ -26,6 +27,11 @@ const LoginPage = () => {
         title: "Oops...",
         text: "Algun campo esta vacio!",
       });
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email)) {
+       setClasePresente(true)
+       return
+      } 
+      setClasePresente(false)
     }else{
       const sendFormLogin = await clienteAxios.post('/users/login',{
         emailUsuario:formValues.email,
@@ -66,20 +72,24 @@ const LoginPage = () => {
       <div className="d-flex align-items-center justify-content-center wrap">
         <Form className="login-form">
           <Form.Group className="mb-3 text-white" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" name='email' value={formValues.email} onChange={handleChange} placeholder="Enter email" />
-            <Form.Text className="text-muted text-white">
+            <Form.Label>Ingresar Email</Form.Label>
+            <Form.Control type="email" name='email' maxLength={65} minLength={8} value={formValues.email} onChange={handleChange} placeholder="Ingresar Email" />
+            <Form.Text className=" text-white">
               Nunca compartiremos su correo electrónico con nadie más.
             </Form.Text>
+            {
+              clasePresente ? <p className='text-danger '>Correo Invalido</p> :""
+            }
+            
           </Form.Group>
 
           <Form.Group className="mb-3 text-white" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name='pass' value={formValues.pass} onChange={handleChange} placeholder="Password" />
+            <Form.Label>Contraseña</Form.Label>
+            <Form.Control type="password" name='pass'  maxLength={45} minLength={8} value={formValues.pass} onChange={handleChange} placeholder="Ingresar Contraseña" />
           </Form.Group>
 
           <Button variant="success" type="submit" onClick={handleClick}>
-            Enviar
+            Ingresar Sesion
           </Button>
         </Form>
       </div>

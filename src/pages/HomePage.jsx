@@ -89,20 +89,46 @@ const HomePage = () => {
               {classlist.map((clase, index) => (
                 <Col md={4} className='mt-5' key={index}>
                   {(index + 1) % 3 === 0 ? (
-                    <ComponenteDiferente1 />
+                   <CardsC
+                   url={"https://i.postimg.cc/zDhMzjHv/pricing1.png"}
+                   titulo={clase.Titulo}
+                   precio={clase.Precio}
+                   clase={"background"}
+                   primera={<i className="ri-checkbox-circle-line color"><span>Fuerza</span></i>}
+                   segunda={<i className="ri-checkbox-circle-line color"><span>Definicion</span></i>}
+                   tercera={<i className="ri-checkbox-circle-line color"><span>Entrenamiento</span></i>}
+                   cuarta={<i className="ri-checkbox-circle-line color"><span>Fortalecimiento</span></i>}
+                   quinta={<i className="ri-checkbox-circle-line color"><span>Resistencia</span></i>}
+                   boton={
+                     <Link to={`/PlansPage/${clase._id}`}>Ver Clase:</Link>
+                   }
+                 />
                   ) : (index + 1) % 2 === 0 ? (
-                    <ComponenteDiferente2 />
+                    <CardsC
+                    url={"https://i.postimg.cc/zDhMzjHv/pricing1.png"}
+                    titulo={clase.Titulo}
+                    precio={clase.Precio}
+                    clase={"background"}
+                    primera={<i className="ri-checkbox-circle-line color"><span>Intesidad</span></i>}
+                    segunda={<i className="ri-checkbox-circle-line color"><span>Variedad</span></i>}
+                    tercera={<i className="ri-checkbox-circle-line color"><span>Agilidad</span></i>}
+                    cuarta={<i className="ri-checkbox-circle-line color"><span>Superacion</span></i>}
+                    quinta={<i className="ri-checkbox-circle-line color"><span>Cardio</span></i>}
+                    boton={
+                      <Link to={`/PlansPage/${clase._id}`}>Ver Clase:</Link>
+                    }
+                  />
                   ) : (
                     <CardsC
                       url={"https://i.postimg.cc/zDhMzjHv/pricing1.png"}
                       titulo={clase.Titulo}
                       precio={clase.Precio}
                       clase={"background"}
-                      primera={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
-                      segunda={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
-                      tercera={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
-                      cuarta={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
-                      quinta={<i className="ri-checkbox-circle-line color"><span>hola</span></i>}
+                      primera={<i className="ri-checkbox-circle-line color"><span>Completo</span></i>}
+                      segunda={<i className="ri-checkbox-circle-line color"><span>Integrado</span></i>}
+                      tercera={<i className="ri-checkbox-circle-line color"><span>Optimizado</span></i>}
+                      cuarta={<i className="ri-checkbox-circle-line color"><span>Versátil</span></i>}
+                      quinta={<i className="ri-checkbox-circle-line color"><span>Desafiante</span></i>}
                       boton={
                         <Link to={`/PlansPage/${clase._id}`}>Ver Clase:</Link>
                       }

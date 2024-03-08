@@ -1,11 +1,9 @@
 import React from 'react'
-import '../css/ProductPage.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Imgs from '../components/Imgs';
 import { useEffect, useState } from 'react'; 
-import { Link, useNavigate } from 'react-router-dom';
  import clienteAxios, { config } from '../helpers/axiosconfig'; 
  import { useParams } from 'react-router-dom';
 const ProductPage = () => {

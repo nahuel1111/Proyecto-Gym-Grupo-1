@@ -206,9 +206,14 @@ const GetAllUsers= async ()=>{
                  <td>{user.role}</td>
                  <td>
                  <Button variant="primary" onClick={() => handleShowUpdate(user)}> Editar</Button>
-                 <Button variant="primary" onClick={() => deleteUser(user._id)}> Eliminar</Button>
+                 {
+                  user.emailUsuario=="hola@hotmail.com" ?
+                  <Button variant="primary" className='d-none' > Admin</Button>
+                  :
+                  <Button variant="danger" onClick={() => deleteUser(user._id)}> Eliminar</Button>
+                 }
                  <Button variant="success">
-  <Link to={`/AdminComment/${user._id}`}>Comentarios</Link>
+  <Link className='nav-link' to={`/AdminComment/${user._id}`}>Comentarios</Link>
 </Button>
                  </td> 
                 

@@ -89,6 +89,14 @@ try {
     formData.append('precio', productState.precio)
     formData.append('descripcion', productState.descripcion)
     formData.append('imagen', productState.imagen)
+    if (productState.precio < 0) {
+      Swal.fire({
+        title: 'El precio no puede ser negativo',
+        icon: 'error'
+      })
+      return
+    }
+
   const updateProduct= await clienteAxios.put(`/products/${productState._id}`,formData,config)
   if (updateProduct.status === 200){
     handleCloseUpdate()
@@ -167,7 +175,7 @@ useEffect(() => {
 
 <Form.Group className="mb-3" controlId="formBasicPrice">
   <Form.Label>Precio</Form.Label>
-  <Form.Control type="text" placeholder="Ingrese el precio"  name='precio' onChange={handleChange} />
+  <Form.Control type="number" placeholder="Ingrese el precio"  name='precio' onChange={handleChange} />
 </Form.Group>
 <Form.Group className="mb-3" controlId="formBasicPrice">
   <Form.Label>Descripcion</Form.Label>
@@ -205,7 +213,7 @@ useEffect(() => {
              <tr key={product._id}>
      
               <td>{product.titulo}</td>
-              <td>{product.precio}</td>
+              <td>${product.precio}</td>
               <td>{product.descripcion}</td>
               <td><Imgs url={product.imagen} alt={'producto'} width={'50%'}  /></td>
               <td>
@@ -231,7 +239,7 @@ useEffect(() => {
       <Form.Group className="mb-3" controlId="formBasicPrice">
         <Form.Label>Precio</Form.Label>
         <Form.Control
-          type="text"
+          type="number"
           placeholder="Ingrese el precio"
           value={productState.precio}
           name="precio"

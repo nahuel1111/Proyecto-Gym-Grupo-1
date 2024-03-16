@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/ContactPage.css'
 import Button from 'react-bootstrap/Button';
+import React, { useRef } from 'react';
 
 const ContactPage = () => {
   return (

@@ -16,6 +16,7 @@ const PlansPage = () => {
   const [fechaActual, setFechaActual] = useState(null);
   const [fechafinalback,setFechafinalback] = useState(null);
   const [update,setUpdate]= useState(false)
+  const [usuario,setUsuario] = useState([])
   const use = useParams()
 
   const userid = JSON.parse(sessionStorage.getItem('idUsuario'))
@@ -24,6 +25,7 @@ const PlansPage = () => {
     
   const classone = await clienteAxios.get(`/Class/${use.id}`) 
   setListaclase(classone.data.GetClass)
+  setUsuario(classone.data.GetClass.Usuarios)
   const teacherOne= await clienteAxios.get(`/teachers/${classone.data.GetClass.IDProfesor}`)
   setTeacher(teacherOne.data.GetTeacher)
   const fechacierre = await clienteAxios.get(`/users/${userid}`)
@@ -55,8 +57,7 @@ const PlansPage = () => {
       console.log(error);
     }
   }
-const sacarusuario= async (ev)=>{
-  ev.preventDefault()
+const sacarusuario= async ()=>{
 await clienteAxios.put(`/Class/delete/${use.id}`,  {
   Usuarios: userid,
   fechainicio: undefined
@@ -66,17 +67,21 @@ setUpdate(false)
 }
   useEffect(() => {
     const interval = setInterval(() => {
+      
       const now = new Date();
       if(fechafinalback){
-        if (now >= fechafinalback) {   
+        const fechaFinal = new Date(fechafinalback);
+        if (now >= fechaFinal) {   
           sacarusuario();
         }
       }
-    }, 60000)
+    }, 10000)
   
   }, []);
   
-
+  useEffect(() => {
+    console.log(usuario[0]);
+  }, [usuario]);
   useEffect(() => {
     GetOneClass()
   },[update])
@@ -108,19 +113,26 @@ setUpdate(false)
         <hr className='text-light' />
       </Row></div>
       <div className='Div-Reserva-Turno'>
-  {  
+      {  
+  usuario.includes(userid) ? (
+    <h2>
+      Clase Agregada, puede pasarse por la sucursal al horario mencionado 
+    </h2>
+  ) : (
     fechafinalback ? (
       <h2>
-        Clase Agregada , puede pasarse por la sucursal al horario mencionado 
+        Ya has reservado una clase previamente.
       </h2>
     ) : (
-      <h2>Reserva Tu Plan:  
+      <h2>
+        Reserva Tu Plan:  
         <Button variant="secondary" onClick={ReservarClase}>
           Reservar Clase
         </Button>
       </h2>
     )
-  }
+  )
+}
 </div>
         <Row>
           <Col>

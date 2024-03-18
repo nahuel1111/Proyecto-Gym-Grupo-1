@@ -23,9 +23,9 @@ const Navbarx = () => {
 <Navbar data-bs-theme="dark" className='navbar' expand="lg" >
       <Container className='container-navbar'>
         <div className='Logo'>
-          <a href="#home"><Imgs url={'https://i.postimg.cc/V6HyGBwj/Logo-Gym-removebg-preview.png'} alt={'Logo'} width={'50px'} /></a>
+          <a href="/HomePage"><Imgs url={'https://i.postimg.cc/V6HyGBwj/Logo-Gym-removebg-preview.png'} alt={'Logo'} width={'50px'} /></a>
         </div>
-        <Navbar.Brand href="#home" className='Nombre-gym'>Monkey "D" Gym</Navbar.Brand>
+        <Navbar.Brand href="/HomePage" className='Nombre-gym'>Monkey "D" Gym</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse >
           { role === 'admin' ?

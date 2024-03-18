@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+
 
 .main{
     background-color: #101616;
 
 }
-
 .container1{
     width: 100%;
     margin: auto;
@@ -12,7 +14,6 @@
     justify-content: center;
     max-width: 1100px;
     flex-wrap: wrap;
-   
     border-radius: 4%;
 }
 
@@ -22,11 +23,32 @@
     margin: 0 auto;
     margin-top: 4%;
     padding: 20px;
-    color: white;
+    color: black;
     font-family: 'Poppins', sans-serif;
     text-align: center;
     border-radius: 15px;
 }
+
+.texto-primera-cont h2{
+    font-size: 20px;
+    text-align: center;
+}
+
+.texto-primera-cont h2{
+    font-family:'Red Hat Display', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.texto-primera-1-cont{
+    -webkit-text-stroke: 1px hsl(0, 0%, 0%);
+    color: transparent;
+}
+
+.texto-primera-2-cont{
+    color: black;
+}
+
 
 .box-img{
     border-radius: 50%;

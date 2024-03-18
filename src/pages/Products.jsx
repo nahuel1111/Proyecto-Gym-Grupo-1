@@ -34,9 +34,9 @@ const Products = () => {
                     </div>
                     <Row>
                         {products.map((product) => (
-                            <Col md={4} className='ajuste' key={product._id}>
-                                <Card className='Card-Padre d-flex flex-column h-100'>
-                                    <Imgs url={product.imagen} alt={'producto'} width={'100%'} />
+                            <Col md={4} className='ajuste mt-5 mb-4' key={product._id}>
+                                <Card className='Card-Padre d-flex flex-column h-100 '>
+                                    <Imgs url={product.imagen} alt={'producto'} width={'100%'} id={"imagen-cambios"} />
                                     <div className='mt-auto'>
                                     <Card.Body>
                                         <Card.Title>{product.titulo}</Card.Title>

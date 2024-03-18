@@ -1,9 +1,30 @@
-
 import '../css/ContactPage.css'
-import Button from 'react-bootstrap/Button';
 import React, { useRef } from 'react';
-
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 const ContactPage = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_xiycpx2', 'template_sa98hb7', form.current, {
+        publicKey: '1b92zdRw9s9x777PS',
+      })
+
+      .then(
+        () => {
+          Swal.fire({
+            title: "Se mando el email correctamente",
+            icon: "success"
+          });
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
   return (
     <main className="fuenteTexto d-flex justify-content-center" style={{ backgroundColor: '#101616' }}>
       <div className="w-100 container-fluid d-flex justify-content-center align-items-center shadow px-lg-5">
@@ -21,23 +42,23 @@ const ContactPage = () => {
           <div className="col-12 col-md-9 ps-md-0">
             <div className="text-white px-4 py-3" style={{ backgroundColor: '#ABCF2F' }}>
               <h2 className="text-center mb-4">Envía un mensaje</h2>
-              <form>
+              <form ref={form} onSubmit={sendEmail}>
                 <div className="mb-3">
                   <label htmlFor="inputName" className="form-label">Nombre</label>
-                  <input type="text" className="form-control" id="inputName" aria-describedby="emailHelp"
-                    minLength="5" maxLength="20" />
+                  <input type="text" className="form-control" id="inputName" name="from_name" aria-describedby="emailHelp"
+                    minLength="5" maxLength="20" required />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">Correo Electrónico</label>
-                  <input type="email" className="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" maxLength="35" /> 
+                  <input type="email" className="form-control" id="exampleInputEmail1" name="email_id"
+                    aria-describedby="emailHelp" maxLength="35" required/> 
                 </div>
                 <div className="input-group d-flex flex-column mb-3">
                   <label htmlFor="mensaje" className="form-label">Mensaje</label>
-                  <textarea className="form-control rounded-2 w-100" aria-label="With textarea" id="mensaje"
-                    maxLength="200" rows="7"></textarea>
+                  <textarea className="form-control rounded-2 w-100" aria-label="With textarea" name="message" id="mensaje"
+                    maxLength="200" rows="7" required></textarea>
                 </div>
-                <button type="submit" className="btn w-100 btnPagAnt shadow">Enviar Mensaje</button>
+                <button type="submit" className="btn w-100 btnPagAnt shadow" value="Send">Enviar Mensaje</button>
               </form>
             </div>
           </div>

@@ -88,8 +88,8 @@ setUpdate(false)
   return (
     <main>
       <Container>
-        <hr className='text-light mt-2' />   
-        <div>   <div class="Div-Musculacion">
+       
+        <div>   <div className="Div-Musculacion">
         
         <h3 class="">{listaclase.Titulo}</h3>
         <p class="opacity-50">"Desafía tus límites con nuestro plan de entrenamiento pesado y alcanza un nivel superior de fuerza y resistencia."</p>

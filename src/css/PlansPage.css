@@ -1,10 +1,8 @@
 .Div-Musculacion{
     color: white;
     text-align: center;
-    transition: 0.3s;
-    margin-top: 25px;
     margin-left: 100px;
-    margin-top: 10px; 
+    padding-top: 20px
 }
 
 .Descripcion-Plan{

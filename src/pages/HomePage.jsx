@@ -35,6 +35,7 @@ const HomePage = () => {
       text: "El Comentario se agrego correctamente.",
       icon: "success"
     })
+    setComentario("")
   }
   const handleScroll = () => {
     if (scrollRef.current) {

@@ -31,25 +31,25 @@ const Navbarx = () => {
           { role === 'admin' ?
 <Nav className="cambio">
 
-<Nav.Link href="/AdminPage" className='mt-2'>Inicio</Nav.Link>
-  <Nav.Link href="/AdminProduct"  className='mt-2'>Productos</Nav.Link>
-  <Nav.Link  href="/AdminUser"  className='mt-2'>Usuarios</Nav.Link>
-  <Nav.Link href="/AdminProductClass"   className='mt-2'>Clases</Nav.Link>
-  <Nav.Link href="/AdminTeacher"  className='mt-2'>Profesores</Nav.Link>
+<Link to="/AdminPage" className='mt-2 nav-link'>Inicio</Link>
+  <Link to="/AdminProduct"  className='mt-2 nav-link'>Productos</Link>
+  <Link  to="/AdminUser"  className='mt-2 nav-link'>Usuarios</Link>
+  <Link to="/AdminProductClass"   className='mt-2 nav-link'>Clases</Link>
+  <Link to="/AdminTeacher"  className='mt-2 nav-link'>Profesores</Link>
   </Nav>
  :
  <Nav className="cambio">
-        <Nav.Link href="/homePage" className='mt-2'>Inicio</Nav.Link>
-  <Nav.Link href="AboutUs"  className='mt-2'>Sobre nosotros</Nav.Link>
-  <Nav.Link href="ContactPage"  className='mt-2'>Contacto</Nav.Link>
-  <Nav.Link href="/Products"  className='mt-2'>Productos</Nav.Link>
+        <Link to="/homePage" className='mt-2 nav-link'>Inicio</Link>
+  <Link to="AboutUs"  className='mt-2 nav-link'>Sobre nosotros</Link>
+  <Link to="ContactPage"  className='mt-2 nav-link'>Contacto</Link>
+  <Link to="/Products"  className='mt-2 nav-link'>Productos</Link>
          
   </Nav>
           }
   
  <div className='boton-cambio'>
   { token && role ?
-    <Link href="#link" onClick={cerrarSesion}>Cerrar Sesion</Link> :
+    <Link to="#link" className='nav-link' onClick={cerrarSesion}>Cerrar Sesion</Link> :
     <span>Bienvenido</span>
   }
  

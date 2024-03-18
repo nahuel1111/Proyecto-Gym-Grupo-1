@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
 .wrap {
-    width: 100vw;
+    width: 100%;
     height: 85vh;
     display: flex;
     align-items: flex-end;

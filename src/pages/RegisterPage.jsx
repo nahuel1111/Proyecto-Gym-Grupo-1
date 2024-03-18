@@ -5,9 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
 import clienteAxios, { jsonConfig } from '../helpers/axiosconfig';
 import {useState } from 'react'; 
-
+import { useNavigate } from 'react-router-dom';
 const RegisterPage = () => {
-
+  const navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     user: '',
     email: '',
@@ -36,6 +36,11 @@ const RegisterPage = () => {
             emailUsuario: email,
             contrasenia: pass,
           }, jsonConfig)
+          Swal.fire({
+            title: "Inicio de sesion OK!",
+            icon: "success"
+          });
+          navigate('/HomePage')
         }
       }
     } catch (error) {
@@ -69,7 +74,7 @@ const RegisterPage = () => {
               <Form.Control type="password" name='rpass' minLength={2} maxLength={40} value={formValues.rpass} onChange={handleChange} placeholder="Confirmar Contraseña" />
             </Form.Group>
 
-            <Button variant="success" type="submit" onClick={handleClick}>
+            <Button variant="success" type="button" onClick={handleClick}>
               Registrarse
             </Button>
           </Form>

@@ -1,6 +1,7 @@
-import React from 'react'
+
 import '../css/ContactPage.css'
 import Button from 'react-bootstrap/Button';
+import React, { useRef } from 'react';
 
 const ContactPage = () => {
   return (
@@ -29,7 +30,7 @@ const ContactPage = () => {
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">Correo Electrónico</label>
                   <input type="email" className="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" maxLength="35" />
+                    aria-describedby="emailHelp" maxLength="35" /> 
                 </div>
                 <div className="input-group d-flex flex-column mb-3">
                   <label htmlFor="mensaje" className="form-label">Mensaje</label>

@@ -23,24 +23,33 @@
     font-family: 'Poppins', sans-serif;
     margin: 0; 
     background-color: #1C1F1D;
+    border: #ABCF2F 2px solid;
     border-radius: 10px;
     font-size: 50px;
+    
 }
 
 .texto-error-2 {
     color: white;
+    font-weight: bold;
     font-family: 'Poppins', sans-serif;
     padding-top: 20PX;
-    font-size: 50px;
+    font-size: 20px;
+}
+
+.div-texto-error{
+    width: 60%;
+    backdrop-filter: blur(5px); /* Cambia el valor para ajustar el nivel de difuminado */
+    background-color: rgba(61, 57, 57, 0.5);
+    border: #ABCF2F 2px solid;
 }
 
 .texto-error-3 {
     font-family: 'Poppins', sans-serif;
-    padding-top: 20PX;
+    padding: 20PX;
     background-color: #1C1F1D;
     border: 2px solid #ABCF2F;
     border-radius: 10px;
     color: white;
     font-size: 20px;
-    
 }

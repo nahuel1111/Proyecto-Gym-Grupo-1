@@ -17,6 +17,10 @@
     display: inline-block;
 }
 
+.titulo-producto{
+    color: #29CD17;
+}
+
 .divPadre{
     display: flex;
     justify-content: center;
@@ -53,7 +57,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #29CD17;
+    color: white;
 }
 
 .descripcion-Padre ul{
@@ -61,6 +65,13 @@
     color: white;
     text-decoration: underline;
 }
+
+.descripcion-Hijo{
+    width: 90%;
+    border: #5B21A5 2px solid;
+    margin-bottom: 20px;
+}
+
 
 
 

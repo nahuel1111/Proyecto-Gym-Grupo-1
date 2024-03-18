@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
 
 *{
     margin: 0;
@@ -38,10 +39,12 @@ padding: 0;
 color: white;
 }
 
-.texto-cambio a{
+.texto-cambio button{
 text-decoration: none;
-color: black;
+color: white;
+font-family: 'Song Myung', serif;
 background-color: green;
+border-radius: 10px;
 padding: 20px;
 display: inline-block;
 margin-top: 20px;

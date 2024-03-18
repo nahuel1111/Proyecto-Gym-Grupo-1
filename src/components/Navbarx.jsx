@@ -53,7 +53,7 @@ const Navbarx = () => {
  <div className='boton-cambio'>
   { token && role ?
     <Link to="#link" className='nav-link' onClick={cerrarSesion}>Cerrar Sesion</Link> :
-    <span>Bienvenidos</span>
+    <span>Bienvenido</span>
   }
  
  

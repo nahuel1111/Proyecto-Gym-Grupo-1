@@ -30,7 +30,7 @@ const Footerx = () => {
             <h5 className='titulo-footer text-light'>"Clases"</h5>
             <ul className='cambios mt-3 text-light'>
               <li><a href="/Error404">Musculacion</a></li>
-              <li><a href="/Error404">Clases</a></li>
+              <li><a href="/Error404">CrossFit</a></li>
               <li><a href="/Error404">Plan Full</a></li>
             </ul>
           </Col>

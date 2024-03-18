@@ -3,6 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Imgs from '../components/Imgs';
+import Swal from 'sweetalert2';
+import '../css/ProductPage.css'
 import { useEffect, useState } from 'react'; 
  import clienteAxios, { config } from '../helpers/axiosconfig'; 
  import { useParams } from 'react-router-dom';
@@ -14,6 +16,12 @@ const GetOneProduct = async ()=>{
     setProduct(oneproduct.data.getProduct)
 }
 
+const ComprarProducto=()=>{
+    Swal.fire({
+        title: "Producto reservado con Exito, Te espera en el Gimnasio",
+        icon: "success"
+      });
+}
     useEffect(() => {
         GetOneProduct()
       },[])
@@ -21,10 +29,10 @@ const GetOneProduct = async ()=>{
         <>
             <main className='main-Padre'>
             <Container>
-            <div class="DivNombre">
-                        <h3 class="">{product.titulo}</h3>
-                    
-                    </div>
+            <div className="DivNombre">
+                        <h3 className='titulo-producto'>{product.titulo}</h3>
+                        <hr className='text-light' />
+                                       </div>
                     
                 <Row>
                         <Col>
@@ -35,13 +43,10 @@ const GetOneProduct = async ()=>{
                                 <ul className='list-group list-group-flush'>
                                     <div className='text-center text-light'>
                                         <h1 className='fs-1 bg-transparent li-1'>$ {product.precio}</h1>
-                                        
                                     </div>
-                            
-                                    <div></div>
-                                    <p className="text-decoration-underline text-light mt-5"><i></i> Producto con Stock </p>
+                                    <p className="text-decoration-underline text-light mt-5"><i></i> ° Producto con Stock </p>
 
-                                    <button type="button" className="button text-light mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <button type="button" onClick={ComprarProducto} className="button text-light mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Se Compra en el local
                                     </button>
                                 </ul>

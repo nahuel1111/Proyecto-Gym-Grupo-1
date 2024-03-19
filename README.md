@@ -1,6 +1,6 @@
 # Bienvenidos a Monkey "D" Gym:
 
-![Monkey "D" Gym](../Proyecto-Gym-Grupo-1/src/assets/Img/Logo-Gym.jpg)
+![Monkey "D" Gym](https://github.com/nahuel1111/Proyecto-Gym-Grupo-1/blob/master/src/assets/Img/Logo-Gym.jpg)
 
 ¡Bienvenidos a *Monkey D Gym*, tu destino para un estilo de vida saludable y activo! Nuestro gimnasio ofrece una variedad de servicios y productos para ayudarte a alcanzar tus metas de fitness.
 

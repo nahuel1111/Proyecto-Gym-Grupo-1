@@ -81,13 +81,13 @@ En *Monkey D Gym*, nos comprometemos a proporcionar un ambiente acogedor y motiv
 
 ## -- Creadores del Proyecto --
 
-   - ![Nahuel Ricardo Pumara](https://github.com/nahuel1111)
+   - ![Nahuel Ricardo Pumara - GitHub](https://github.com/nahuel1111)
         ° **Correo electronico** :: ricardo-nahuel@hotmail.com
         ° **Redes sociales**    
             `Instagram`: (https://www.instagram.com/nahuel__rp/)
             `Linkedin`: (https://www.linkedin.com/in/ricardo-nahuel-pumara-0b3aab272/)
 
-   - ![Cesar Hermida Cordaro](https://github.com/CesarHerm)
+   - ![Cesar Hermida Cordaro - GitHub](https://github.com/CesarHerm)
         ° **Correo electronico** :: cesar.hermida.cordaro@gmail.com 
         ° **Redes sociales**
             `Instagram`: (https://www.instagram.com/_cesarher/)

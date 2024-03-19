@@ -94,5 +94,9 @@ En *Monkey D Gym*, nos comprometemos a proporcionar un ambiente acogedor y motiv
             `Linkedin`: (https://www.linkedin.com/in/cesar-hermida-a550b3186/)
 
 ## -- Comentarios: --
- 
+
 Si deseas compartir tu opinión, realizar alguna crítica o tienes preguntas sobre el funcionamiento o contenido de la web, no dudes en ponerte en contacto con nosotros. Puedes escribirnos a **Monkey-D-Gym@gmail.com** Estamos siempre disponibles para escucharte y ayudarte en lo que necesites.
+
+## -- Estado del Proyecto: --
+
+    Estado del proyecto: Finalizado ✅

@@ -47,6 +47,14 @@ const AdminClassPage = () => {
         formData.append('Descripcion', classlistState.Descripcion)
         formData.append('Horario', classlistState.Horario)
         formData.append('imagen', classlistState.imagen)
+        if (classlistState.Precio < 0) {
+          Swal.fire({
+            title: 'El precio no puede ser negativo',
+            icon: 'error'
+          })
+          return
+        }
+    
       const updateClass= await clienteAxios.put(`/Class/${classlistState._id}`,formData,config)
       if (updateClass.status === 200){
         handleCloseUpdate()
@@ -96,7 +104,7 @@ const GetAllClass = async ()=>{
     <tr key={clase._id}>
       <td>{clase.Titulo}</td>
       <td>{clase.Descripcion}</td>
-      <td>{clase.Precio}</td>
+      <td>${clase.Precio}</td>
       <td>{clase.Horario}</td>
       <td><Imgs url={clase.imagen} alt={'clase'} width={'20%'}  /></td>
       <td>   <Button variant="primary" onClick={() => handleShowUpdate(clase)}> Editar</Button>

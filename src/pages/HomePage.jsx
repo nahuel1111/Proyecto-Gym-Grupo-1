@@ -1,4 +1,3 @@
-import React from 'react'
 import '../css/homepages.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -13,11 +12,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Swal from 'sweetalert2';
+import React, { useRef } from 'react';
+
 
 const HomePage = () => {
   const [classlist, setClasslist] = useState([])
   const [comentario, setComentario] = useState('');
-
+  const scrollRef = useRef(null);
   const userid = JSON.parse(sessionStorage.getItem('idUsuario'))
   const GetClass = async () => {
     const AllClass = await clienteAxios.get("/Class")
@@ -34,6 +35,12 @@ const HomePage = () => {
       text: "El Comentario se agrego correctamente.",
       icon: "success"
     })
+    setComentario("")
+  }
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
   }
   useEffect(() => {
     GetClass()
@@ -49,7 +56,7 @@ const HomePage = () => {
                 <h1>CUERPO TENGA FORMA</h1>
                 <p>"En nuestro gimnasio, no solo te ayudamos a esculpir tu cuerpo,
                   sino que también te brindamos el apoyo y la motivación necesarios para alcanzar tus metas de fitness y transformar tu vida por completo."</p>
-                <a href="">¿Empezamos?</a>
+                <button onClick={handleScroll}>Comenzamos</button>
               </div>
 
             </Col>
@@ -98,7 +105,7 @@ const HomePage = () => {
           </div>
 
           <div className='mt-5'>
-            <div className='parrafo-clases'>
+            <div className='parrafo-clases' ref={scrollRef}>
               <h3>°NUESTROS PLANES PARA QUE LOGRES TU MÁXIMO POTENCIAL:</h3>
             </div>
             <Row>

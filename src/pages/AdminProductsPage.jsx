@@ -224,7 +224,7 @@ useEffect(() => {
     <Modal.Title>Editar Producto</Modal.Title>
   </Modal.Header>
   <Modal.Body>
-    <Form>
+    <Form> 
       <Form.Group className="mb-3" controlId="formBasicTitle">
         <Form.Label>Nombre del Producto</Form.Label>
         <Form.Control

@@ -179,7 +179,7 @@ useEffect(() => {
 </Form.Group>
 <Form.Group className="mb-3" controlId="formBasicPrice">
   <Form.Label>Descripcion</Form.Label>
-  <Form.Control type="text" placeholder="Ingrese el precio"  name='descripcion' onChange={handleChange} />
+  <Form.Control type="text" placeholder="Ingrese la descripcion"  name='descripcion' onChange={handleChange} />
 </Form.Group>
 <Form.Group className="mb-3" controlId="formBasicImage">
   <Form.Label>Imagen</Form.Label>

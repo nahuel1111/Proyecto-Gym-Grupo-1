@@ -29,6 +29,13 @@ const HomePage = () => {
   };
   const EnviarComentario = async (ev) =>{
     ev.preventDefault()
+    if (comentario==""){
+      Swal.fire({
+        title: 'El comentario no puede estar vacio',
+        icon: 'error'
+      })
+      return
+    }
     const comentarios = await clienteAxios.post(`/Comment/${userid}`,{comentario:comentario})
     Swal.fire({
       title: "Comentario Agregado",

@@ -19,6 +19,11 @@ const ContactPage = () => {
             title: "Se mando el email correctamente",
             icon: "success"
           });
+          
+          form.current.from_name.value=""
+          form.current.email_id.value=""
+          form.current.message.value=""
+
         },
         (error) => {
           console.log('FAILED...', error.text);
